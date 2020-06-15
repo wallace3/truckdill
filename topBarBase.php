@@ -131,7 +131,7 @@
                     <div class="dropdown-list-image mr-3">
                       <img
                         class="rounded-circle"
-                        src="img/man.png"
+                        src="template/img/man.png"
                         style="max-width: 60px;"
                         alt=""
                       />
@@ -149,7 +149,7 @@
                     <div class="dropdown-list-image mr-3">
                       <img
                         class="rounded-circle"
-                        src="img/girl.png"
+                        src="template/img/girl.png"
                         style="max-width: 60px;"
                         alt=""
                       />

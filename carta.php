@@ -33,63 +33,42 @@
                 <div id="content">
                     <?php include "topBarBase.php" ?>
                     <div id = "content-wrapper" class ="container-fluid">
-                    <!--Contenido-->
+                        <!--Contenido-->
                         <div class="row">
-                        <!-- Datatables -->
-                            <div class="col-lg-12">
-                                <div class="card mb-4">
+                            <div class="col-lg-12 mb-4">
+                            <!-- Simple Tables -->
+                                <div class="card">
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Facturas</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Carta Cumplimiento Fiscal</h6>
                                     </div>
-                                    <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="dataTable">
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center table-flush">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>Proveedor</th>
-                                                    <th>Servicio</th>
-                                                    <th>Monto</th>
-                                                    <th>Restante</th>
-                                                    <th>Fecha</th>
+                                                    <th>Url</th>
+                                                    <th>Fecha Última Actualización</th>
+                                                    <th>Días Restantes</th>
                                                     <th>Estatus</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Proveedor</th>
-                                                    <th>Servicio</th>
-                                                    <th>Monto</th>
-                                                    <th>Restante</th>
-                                                    <th>Fecha</th>
-                                                    <th>Estatus</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
                                                 <tr>
-                                                    <td>Haley Kennedy</td>
-                                                    <td>Senior Marketing Designer</td>
-                                                    <td>$4,300.00</td>
-                                                    <td>$4,300.00</td>
-                                                    <td>2020-08-01</td>
-                                                    <td><span class = "badge badge-danger">Pendiente</span></td>
-                                                    <td>
-                                                        <i class="far fa-money-bill-alt" data-toggle="modal" data-target="#payModal" style="color:#66bb6a"></i>
-                                                        <i class="fas fa-info-circle" style="color:#6777EF"></i>
-                                                        <i class="fas fa-minus-circle" style="color:#fc544b;"></i>
-                                                        <i class="fas fa-download" style="color:#757575;"></i>
-                                                        <i class="fas fa-upload" style="color:#757575;"></i>
-                                                        <i class="far fa-edit"></i>
-                                                    </td>
+                                                    <td><a href="#">RA0449</a></td>
+                                                    <td>2020-10-01</td>
+                                                    <td>20</td>
+                                                    <td><span class="badge badge-success">Vigente</span></td>
+                                                    <td><i class="fas fa-upload" style="color:#757575;"></i></td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>    
+                                    <div class="card-footer"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-            <!---Fin de Contenido-->
+                    <!---Fin de Contenido-->
                 </div>
                 <?php include "footerBase.php"?>
             </div>
@@ -129,15 +108,6 @@
         <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="template/js/ruang-admin.min.js"></script>
-        <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script>
-            $(document).ready(function () {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-            });
-        </script>
+     
     </body>
 </html>

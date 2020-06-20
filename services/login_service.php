@@ -27,11 +27,20 @@
 
 	$response = curl_exec($curl);
 	$err = curl_error($curl);
+	echo $response;
+	$responseJson	= json_decode($response);	
+	print_r($responseJson->data[0]->Username) ;
+
 
 	curl_close($curl);
 
-	echo $variable;
 
+
+	//echo $variable;
+	//var_dump($http_response_header);
+	//$prueba = json_encode($response);
+	//echo $prueba;
+//echo $response;
 
 
 

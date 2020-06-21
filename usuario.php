@@ -55,6 +55,7 @@
                                                     <th>Usuario</th>
                                                     <th>Correo</th>
                                                     <th>Tipo de Usuario</th>
+                                                    <th>Estatus</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
@@ -63,19 +64,12 @@
                                                     <th>Usuario</th>
                                                     <th>Correo</th>
                                                     <th>Tipo de Usuario</th>
+                                                    <th>Estatus</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Haley Kenned</td>
-                                                    <td>Senior Marketing Designer</td>
-                                                    <td>London</td>
-                                                    <td>
-                                                        <i class="fas fa-ban" style="color:#fc544b;"></i>
-                                                        <i class="fas fa-trash" style="color:#757575;"></i>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="user-body">
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -100,13 +94,7 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="js/users.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script>
-            $(document).ready(function () {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-            });
-        </script>
     </body>
 </html>

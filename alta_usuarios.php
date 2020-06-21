@@ -41,39 +41,36 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Alta de Usuarios</h6>
                             </div>
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" class="form-control" id="correo" placeholder="Email">
-                                        </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="correo" placeholder="Email" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Usuario</label>
-                                        <div class="col-sm-9">
-                                            <input type="email" class="form-control" id="usuario" placeholder="Usuario">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Usuario</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="usuario" placeholder="Usuario" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputEmail3" class="col-sm-3 col-form-label">Tipo de usuario</label>
-                                        <div class = "col-sm-9">
-                                            <select class="form-control mb-3">
-                                                <option>Default select</option>
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Tipo de usuario</label>
+                                    <div class = "col-sm-9">
+                                        <select class="form-control mb-3 types" id="types" required>
+                                        </select>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-                                        <div class="col-sm-9">
-                                            <input type="password" class="form-control" id="password" placeholder="Password">
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-primary">Crear</button>
-                                        </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <button type="button" onclick="createUser();" class="btn btn-primary">Crear</button>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -85,21 +82,38 @@
 
         <!--Modals-->
 
-        <div class="modal" id="payModal" tabindex="-1" role="dialog">
+        <div class="modal" id="modalSuccess" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Éxito</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label>Monto</label>
-                        <input type = "text" id="monto" class = "form-control">
+                        <p>Registro guardado exitosamente</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Realizar Pago</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalError" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Éxito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ocurrio un error al crear usuario</p>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
@@ -117,6 +131,8 @@
         <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="template/js/ruang-admin.min.js"></script>
+        <script src="js/users.js"></script>
+
      
     </body>
 </html>

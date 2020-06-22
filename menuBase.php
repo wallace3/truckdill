@@ -55,12 +55,17 @@
         </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="servicios">
+          <i class="fas fa-list"></i>
+          <span>Servicios de Proveedores</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="carta">
           <i class="far fa-file-alt"></i>
           <span>Carta Cumplimiento Fiscal</span>
         </a>
       </li>
-
 
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>

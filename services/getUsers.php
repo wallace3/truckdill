@@ -23,6 +23,7 @@
     $err = curl_error($curl);
 
 	$responseJson = json_decode($response);	
+	
 
 	if($err){
 		die(json_encode([

@@ -132,7 +132,8 @@
         <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="js/users.js"></script>
-
+        <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
      
     </body>
 </html>

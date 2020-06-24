@@ -59,6 +59,7 @@
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
+                                            
                                             <tfoot>
                                                 <tr>
                                                     <th>Usuario</th>
@@ -69,6 +70,7 @@
                                                 </tr>
                                             </tfoot>
                                             <tbody id="user-body">
+                                            
                                                 
                                             </tbody>
                                         </table>

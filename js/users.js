@@ -1,9 +1,54 @@
 $(document).ready(function() {
-    $('#dataTable').DataTable(); // ID From dataTable 
+     // ID From dataTable 
+    $('#dataTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "services/getUsersCustom",
+        /*columnDefs: [ 
+                
+                /*{
+                    "targets": -1,
+                    "data": null,
+                    "defaultContent": "<button id='block' onclick='blocUser()' type='button' style='background-color:transparent;border:none;'><i class='fas fa-ban' style='color:#fc544b;'></i></button>"
+                } 
+            ]*/
+        columns:[
+                    {
+                        targets: 0,
+                        data: 0
+                    },
+                    {
+                        targets: 1,
+                        data: 1
+                    },
+                    {
+                        targets: 2,
+                        data: 2
+                    },
+                    {
+                        targets: 3,
+                        render: function(data, type){
+                            console.log(data+" "+type);
+                            if(data==1){
+                                return "<span class = 'badge badge-success'>Activo</span>"
+                            }else{
+                                return "<span class = 'badge badge-danger'>Suspendido</span>"
+                            }
+                        }
+                    },
+                    {
+                        targets: 4,
+                        data: null,
+                        defaultContent: "<button id='block' onclick='blocUser()' type='button' style='background-color:transparent;border:none;'><i class='fas fa-ban' style='color:#fc544b;'></i></button>"
+                    } 
+
+                ]
+    });
     $('#dataTableHover').DataTable(); // ID From dataTable 
 
     getTypes();
     getUsers();
+    
 });
 
 function getTypes()
@@ -51,12 +96,13 @@ function createUser()
 function getUsers()
 {
     $.ajax({
-        "url":"services/getUsers",
-        "method": "GET",
-        "dataType":"json",
+        url:"services/getUsers",
+        method: "GET",
+        dataType:"json",
         success:function(response){
             var datos = "";
             var span  = "";
+            
             $.each(response.data.data, function(index, value){
                 if(value.Status == 1){
                     span = '<span class = "badge badge-success">Activo</span>';
@@ -72,7 +118,8 @@ function getUsers()
                         '<td><button id="block" onclick="blocUser('+value.ID_User+')" type="button" style="background-color:transparent;border:none;"><i class="fas fa-ban" style="color:#fc544b;"></i></button></td>'+
                     '</tr>';    
             });
-            $('#user-body').html(datos);
+            //console.log(datos);
+            //$('#user-body').html(datos);
         }
     })
 }

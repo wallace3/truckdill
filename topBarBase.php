@@ -269,7 +269,7 @@
                     style="max-width: 60px;"
                   />
                   <span class="ml-2 d-none d-lg-inline text-white small"
-                    >Maman Ketoprak</span
+                    ><?php echo $_SESSION['userName'];?></span
                   >
                 </a>
                 <div

@@ -1,3 +1,4 @@
+<?php require ('services/session_check.php');?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +32,7 @@
             <?php  include "menuBase.php"?>
             <div id="content-wrapper"  class="d-flex flex-column">
                 <div id="content">
-                    <?php include "topBarBase.php" ?>
+                    <?php require_once("topBarBase.php");  ?>
                     <div id = "content-wrapper" class ="container-fluid">
 
                         <!--Contenido-->

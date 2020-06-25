@@ -12,7 +12,7 @@ $(document).ready(function() {
                     "defaultContent": "<button id='block' onclick='blocUser()' type='button' style='background-color:transparent;border:none;'><i class='fas fa-ban' style='color:#fc544b;'></i></button>"
                 } 
             ]*/
-        columns:[
+            columns:[
                     {
                         targets: 0,
                         data: 0
@@ -43,12 +43,8 @@ $(document).ready(function() {
                     } 
 
                 ]
-    });
-    $('#dataTableHover').DataTable(); // ID From dataTable 
-
+    })
     getTypes();
-    getUsers();
-    
 });
 
 function getTypes()
@@ -93,7 +89,7 @@ function createUser()
     })
 }
 
-function getUsers()
+/*function getUsers()
 {
     $.ajax({
         url:"services/getUsers",
@@ -122,4 +118,4 @@ function getUsers()
             //$('#user-body').html(datos);
         }
     })
-}
+}*/

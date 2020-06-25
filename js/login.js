@@ -11,8 +11,7 @@ $(document).ready(function() {
             
             if(res.status == 200){
                 console.log(res.data);
-                
-                //window.location.href = "index.php";
+                window.location.href = "index.php";
             }else{
                 if(res.status == 1001){
                     $('#error-user').show();

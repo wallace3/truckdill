@@ -27,46 +27,30 @@
 
 	$response = curl_exec($curl);
 	$err = curl_error($curl);
-	echo $response;
-	$responseJson	= json_decode($response);	
-	print_r($responseJson->data[0]->Username) ;
-
-
+	$responseJson	= json_decode($response);
 	curl_close($curl);
 
-
-
-	//echo $variable;
-	//var_dump($http_response_header);
-	//$prueba = json_encode($response);
-	//echo $prueba;
-//echo $response;
-
-
-
-
-
-//echo $response->status;
-
-//echo $response->data[0];
-
-
-exit();
-	/*if (password_verify($_POST['password'], $response->data[0]->password)){
-		echo "hola si entro";
-		$_SESSION['idUsuario'] = $response->data[0]->ID_User;
-		$_SESSION['userName'] = $response->data[0]->Username;
-		$_SESSION['email'] = $response->data[0]->Email;
-		$_SESSION['idType'] = $response->data[0]->ID_Type;
-		$_SESSION['tipo'] = $response->data[0]->Type;
-	}*/
+	if((sha1($_POST['password']) == $responseJson->data[0]->Password)){
+		$_SESSION['idUsuario'] = $responseJson->data[0]->ID_User;
+		$_SESSION['userName'] = $responseJson->data[0]->Username;
+		$_SESSION['email'] = $responseJson->data[0]->Email;
+		$_SESSION['idType'] = $responseJson->data[0]->ID_Type;
+		$_SESSION['tipo'] = $responseJson->data[0]->Type;
+		die(json_encode([
+			"status" => 200,
+			"message" => "Sesion Iniciada"
+		]));
+	
+	}else{
+		die(json_encode([
+			"status" => 1002,
+			"message" => "Password Incorrecto"
+		]));
+	}
 
 	if($err){
 		die(json_encode([
-			"status" => 400,
+			"status" => 1001,
 			"message" => $err
 		]));
-	}else{
-		echo $response;
-    }
-    
+	}

@@ -1,3 +1,4 @@
+<?php require ('services/session_check.php');?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

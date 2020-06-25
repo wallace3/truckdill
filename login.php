@@ -48,29 +48,10 @@
                             <div class="form-group">
                               <input type="password" class="form-control" id="password" placeholder="Contraseña">
                             </div>
-                            <!--<div class="form-group">
-                              <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
-                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                <label class="custom-control-label" for="customCheck">Remember
-                                  Me</label>
-                              </div>
-                            </div>-->
                             <div class="form-group">
                               <button type="button" id="login" class="btn btn-primary btn-block">Ingresar</button>
                             </div>
                             <hr>
-                            <!--<a href="index.html" class="btn btn-google btn-block">
-                              <i class="fab fa-google fa-fw"></i> Login with Google
-                            </a>
-                            <a href="index.html" class="btn btn-facebook btn-block">
-                              <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                            </a>-->
-                        
-                          <!--<div class="text-center">
-                            <a class="font-weight-bold small" href="register.html">Create an Account!</a>
-                          </div>
-                          <div class="text-center">
-                          </div>-->
                         </div>
                       </div>
                     </div>
@@ -92,9 +73,6 @@
     <script src="template/vendor/jquery/jquery.min.js"></script>
     <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="template/js/ruang-admin.min.js"></script>
-    <script src="template/vendor/chart.js/Chart.min.js"></script>
-    <script src="template/js/demo/chart-area-demo.js"></script>
     <script src = "js/login.js"></script>
   </body>
 </html>

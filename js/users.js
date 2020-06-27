@@ -4,14 +4,6 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: "services/getUsersCustom",
-        /*columnDefs: [ 
-                
-                /*{
-                    "targets": -1,
-                    "data": null,
-                    "defaultContent": "<button id='block' onclick='blocUser()' type='button' style='background-color:transparent;border:none;'><i class='fas fa-ban' style='color:#fc544b;'></i></button>"
-                } 
-            ]*/
             columns:[
                     {
                         targets: 0,
@@ -63,9 +55,19 @@ function getTypes()
     })
 } 
 
-function createUser()
-{
-   $.ajax({
+function createUser(){
+   let bnd = true;
+    if(!validate("correo","email")){
+       bnd = false;
+    }
+    if(!validate("password","password")){
+       bnd = false;
+    }
+    if(!validate("types","type")){
+       bnd = false;
+    }
+if(bnd){
+    $.ajax({
         "url":"services/createUser",
         "method": "POST",
         "dataType":"json",
@@ -87,6 +89,68 @@ function createUser()
             }
         }
     })
+}
+    
+}
+
+function validate(value, type){
+    //value = id type= tipo a verificar
+    switch(type){
+        case "email":
+            let  patron=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            let email = document.getElementById(value).value;
+            if(email.search(patron)==0){
+                //Correcto
+                valElemento(value,"remove");
+                
+                return true;
+            }
+            //Incorrecto
+            valElemento(value,"add");
+            return false;
+
+            break;
+        case "password":
+            let longitud = document.getElementById(value).value;
+            longitud = longitud.length;
+            if(longitud>5){
+                valElemento(value,"remove");
+                return true;
+            }
+            valElemento(value,"add");
+            return false;
+            break;
+        case "type":
+            if(document.getElementById(value).value!="--Selecciona--"){
+                valElemento(value,"remove");
+                return true;
+            }
+            valElemento(value,"add");
+            return false;
+            break;
+
+            
+        
+    
+        }
+    
+    
+    
+}
+function valElemento(id,action){
+    //console.log(action);
+    //console.log("document.getElementById("+id+").classList"+"."+action+"('is-invalid')");
+    //document.getElementById(id).classList+"."+action+"('is-invalid')";
+    
+    if(action=="remove"){
+        document.getElementById(id).classList.remove("is-invalid");
+    }else{
+        document.getElementById(id).classList.add("is-invalid");
+    }
+    
+    
+    
+
 }
 
 /*function getUsers()

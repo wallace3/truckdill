@@ -43,28 +43,28 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                                    <label for="email" class="col-sm-3 col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="correo" placeholder="Email" required>
+                                        <input type="email" class="form-control" id="correo" placeholder="Email" name="email" required aria-describedby="emailHelp">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Usuario</label>
+                                    <label for="user" class="col-sm-3 col-form-label">Usuario</label>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="usuario" placeholder="Usuario" required>
+                                        <input type="text" class="form-control" id="usuario" placeholder="Usuario" name="user" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Tipo de usuario</label>
+                                    <label for="types" class="col-sm-3 col-form-label">Tipo de usuario</label>
                                     <div class = "col-sm-9">
-                                        <select class="form-control mb-3 types" id="types" required>
+                                        <select class="form-control mb-3 types" id="types" required name="type">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                        <input type="password" class="form-control" id="password" name="pass" placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -111,7 +111,7 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="bodyError">
                         <p>Ocurrio un error al crear usuario</p>
                     </div>
                     <div class="modal-footer">

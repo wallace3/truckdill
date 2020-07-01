@@ -34,55 +34,64 @@
                 <div id="content">
                     <?php include "topBarBase.php" ?>
                     <div id = "content-wrapper" class ="container-fluid">
-                    <!--Contenido-->
+                        <!--Contenido-->
                         <div class="row">
-                        <!-- Datatables -->
-                            <div class="col-lg-12">
-                                <div class="card mb-4">
+                            <div class="col-lg-12 mb-4">
+                            <!-- Simple Tables -->
+                                <div class="card">
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Proveedores</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Carta Cumplimiento Fiscal</h6>
                                     </div>
-                                    <div style="text-align:right;margin-right:20px">
-                                        <a href = "alta_proveedor">
-                                            <button class="btn btn-primary" type="button" id="nuevoProveedor">
-                                                <i class="fas fa-plus"> Nuevo Proveedor</i>
-                                            </button>
-                                        </a>
-                                    </div>
-                                    <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="dataTable">
+                                    <div class="table-responsive p-3" >
+                                        <table class="table align-items-center table-flush" id="docs-table">
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>Proveedor</th>
-                                                    <th>Servicios</th>
-                                                    <th>Representante</th>
-                                                    <th>RFC</th>
-                                                    <th>Acciones</th>
+                                                    <th>Fecha Última Actualización</th>
+                                                    <th>Url</th>
+                                                    <th>Días Restantes</th>
+                                                    <th>Estatus</th>
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Proveedor</th>
-                                                    <th>Servicios</th>
-                                                    <th>Representante</th>
-                                                    <th>RFC</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
-
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>    
+                                    <div class="card-footer"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-            <!---Fin de Contenido-->
+                    <!---Fin de Contenido-->
                 </div>
                 <?php include "footerBase.php"?>
             </div>
         </div>
+
+        <!--Modals-->
+
+        <div class="modal" id="payModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Monto</label>
+                        <input type = "text" id="monto" class = "form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Realizar Pago</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Fin Modals-->
 
         <!-- Scroll to top -->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -95,6 +104,7 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="js/proveedores.js"></script>
+        <script src="js/docs.js"></script>
+     
     </body>
 </html>

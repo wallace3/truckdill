@@ -34,47 +34,43 @@
                 <div id="content">
                     <?php include "topBarBase.php" ?>
                     <div id = "content-wrapper" class ="container-fluid">
-                        <!--Contenido-->
-                        <div class = "row">
-                            <div class = "col-md-6">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="upload" style='cursor:pointer'>Subir</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="filePdf" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" id="fileName" for="inputGroupFile01">Buscar</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!--Contenido-->
                         <div class="row">
-                            <div class="col-lg-12 mb-4">
-                            <!-- Simple Tables -->
-                                <div class="card">
+                        <!-- Datatables -->
+                            <div class="col-lg-12">
+                                <div class="card mb-4">
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Carta Cumplimiento Fiscal</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Mis Facturas</h6>
                                     </div>
                                     <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="doc-table">
+                                        <table class="table align-items-center table-flush" id="dataTable">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>Fecha Última Actualización</th>
-                                                    <th>Url</th>
-                                                    <th>Días Restantes</th>
+                                                    <th>Descripción</th>
+                                                    <th>Monto</th>
+                                                    <th>Fecha</th>
                                                     <th>Estatus</th>
+                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                             </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Descripción</th>
+                                                    <th>Monto</th>
+                                                    <th>Fecha</th>
+                                                    <th>Estatus</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </tfoot>
                                         </table>
                                     </div>
-                                    <div class="card-footer"></div>
-                                </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
-                    <!---Fin de Contenido-->
+            <!---Fin de Contenido-->
                 </div>
                 <?php include "footerBase.php"?>
             </div>
@@ -82,21 +78,55 @@
 
         <!--Modals-->
 
-        <div class="modal" id="payModal" tabindex="-1" role="dialog">
+        <div class="modal" id="paymentsModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Pagos Registrados</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label>Monto</label>
-                        <input type = "text" id="monto" class = "form-control">
+                        <div class = "table-responsive p3">
+                            <table class="table align-items-center table-flush" id="dataTable">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Monto</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body-payments">
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Monto</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Realizar Pago</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No Hay Pagos Registrados</p>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
@@ -116,7 +146,8 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="js/doc.js"></script>
-     
+        <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="js/facturasProveedor.js"></script>
+
     </body>
 </html>

@@ -36,6 +36,7 @@
             <a class = "collapse-item" href="proveedores">Proveedores</a>
             <a class = "collapse-item" href = "alta_proveedor">Alta Proveedor</a>
             <a class = "collapse-item" href = "facturas">Facturas</a>
+            <a class = "collapse-item" href = "docs">Cartas Cumplimiento Fiscal</a>
           </div>
         </div>
       </li>
@@ -66,7 +67,12 @@
           <span>Carta Cumplimiento Fiscal</span>
         </a>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link" href="facturas_proveedor">
+          <i class="far fa-file"></i>
+          <span>Mis Facturas</span>
+        </a>
+      </li>
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>
     </ul>

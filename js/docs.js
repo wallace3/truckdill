@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#docs-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "services/getInvoicesSupplier",
+        ajax: "services/getDocs",
             columns:[
                 {
                     targets: 0,

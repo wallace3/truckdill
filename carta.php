@@ -24,6 +24,7 @@
         />
         <link href="template/css/ruang-admin.min.css" rel="stylesheet" />
         <link href="template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+       
 
     </head>
 
@@ -42,9 +43,13 @@
                                         <span class="input-group-text" id="upload" style='cursor:pointer'>Subir</span>
                                     </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="filePdf" aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" id="fileName" for="inputGroupFile01">Buscar</label>
+                                        <input type="file" class="custom-file-input" id="filePdf" >
+                                        <label class="custom-file-label" for="customFileLangHTML" id="fileName" data-browse="Seleccionar Archivo">Seleccionar Archivo</label>
                                     </div>
+                                    <!--<div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="filePdf" data-buttonText="Seleccionar"  aria-describedby="inputGroupFileAddon01">
+                                        <label class="custom-file-label" id="fileName" for="inputGroupFile01">Buscar</label>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>

@@ -1,14 +1,5 @@
 <?php
 
-session_name ("TRUCK");
-session_start();
-$user = $_SESSION['idSup'];
-
-date_default_timezone_set("America/Mexico_City");
-$current = date("Y-m");
-$todate =  date("Y-m",strtotime($current."+ 1 month")).'-17'; 
-
-
 /*
  * DataTables example server-side processing script.
  *
@@ -28,22 +19,18 @@ $todate =  date("Y-m",strtotime($current."+ 1 month")).'-17';
  */
 
 // DB table to use
-$table = 'document';
+$table = 'services';
 
 // Table's primary key
-$primaryKey = 'ID_Document';
+$primaryKey = 'ID_Service';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-	array( 'db' => '`x`.`Date`',   'dt' => 0, 'field' => 'Date' ),
-    array( 'db' => '`x`.`Url`',  'dt' => 1, 'field' => 'Url' ),
-    array( 'db' => '`x`.`restante`',  'dt' => 2, 'field' => 'restante' ),
-    array( 'db' => '`x`.`ID_Document`',  'dt' => 3, 'field' => 'ID_Document' ),
-    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 4, 'field' => 'ID_Supplier' ),
-
+	array( 'db' => '`s`.`Service`',   'dt' => 0, 'field' => 'Service' ),
+    array( 'db' => '`s`.`ID_Service`',  'dt' => 1, 'field' => 'ID_Service' )
 );
 
 // SQL server connection information
@@ -65,14 +52,8 @@ require('ssp.customized.class.php' );
 
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
-$joinQuery = "FROM(
-                SELECT 
-                    doc.ID_Document, 
-                    doc.ID_Supplier, 
-                    doc.Date, doc.Url, 
-                    DATEDIFF('".$todate."', NOW()) restante 
-                FROM `document` AS `doc`) x";
-$extraWhere = "`x`.`ID_Supplier` = ".$user."";
+$joinQuery = "FROM `services` AS `s`";
+$extraWhere = "`s`.`Status` = 1";
 $groupBy = "";
 $having = "";
 

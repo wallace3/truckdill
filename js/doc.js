@@ -37,7 +37,6 @@ $(document).ready(function(){
         var form_data = new FormData();                  
         form_data.append('file', file_data);
 
-    
         $('#upload').on('click',function(){
             console.log(form_data);
             
@@ -50,6 +49,7 @@ $(document).ready(function(){
                 data:form_data,
                 success:function(response){
                     console.log(response);
+                    $("#doc-table").DataTable().ajax.reload(null, false);
                 }
             });
         });

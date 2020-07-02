@@ -43,34 +43,26 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Servicios de Proveedores</h6>
                                     </div>
                                     <div style="text-align:right;margin-right:20px">
-                                        <a href = "alta_usuarios">
-                                            <button class="btn btn-primary" type="button" id="nuevoServicio">
-                                                <i class="fas fa-plus"> Nuevo Servicio</i>
-                                            </button>
-                                        </a>
+                                        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModal">
+                                            <i class="fas fa-plus" > Nuevo Servicio</i>
+                                        </button>
                                     </div>
                                     <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="dataTable">
+                                        <table class="table align-items-center table-flush" id="services-table">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Servicio</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Servicio</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody id="service-body">
-                                                <tr>
-                                                    <td>Hola</td>
-                                                    <td>Hola</td>
-                                                    <td>Hola</td>
-                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -78,9 +70,53 @@
                             </div>
                         </div>
                     </div>
+
             <!---Fin de Contenido-->
                 </div>
                 <?php include "footerBase.php"?>
+            </div>
+        </div>
+
+        <div class="modal" id="addModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Agregar Servicio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Servicio</label>
+                        <input type = "text" id="service" class = "form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="addService">Agregar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="updateModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Actualizar Servicio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Servicio</label>
+                        <input type = "text" id="serviceU" class = "form-control">
+                        <input type = "hidden" id="idService">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="updateService">Actualizar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -95,12 +131,8 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <script>
-            $(document).ready(function () {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-            });
-        </script>
+        <script src="js/servicios.js"></script>
 
+  
     </body>
 </html>

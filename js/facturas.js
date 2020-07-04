@@ -1,8 +1,8 @@
 $(document).ready(function(){
-    $('#docs-table').DataTable({
+    $('#invoices-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "services/getInvoicesSupplier",
+        ajax: "services/getAllInvoices",
             columns:[
                 {
                     targets: 0,
@@ -22,15 +22,105 @@ $(document).ready(function(){
                 },
                 {
                     targets: 4,
-                    data:3,
+                    data: 4
+                },
+                {
+                    targets: 5,
+                    data: 5,
                     render: function(data, type){
-                        if(data<=0){
-                            return '<span class="badge badge-danger">Vencido</span>'
+                        if(data == 1){
+                            return '<span class="badge badge-primary">Pendiente</span>';
+                        }else if(data == 2){
+                            return '<span class="badge badge-success">Completada</span>';
                         }else{
-                            return '<span class="badge badge-success">Activo</span>'
+                            return '<span class="badge badge-danger">Cancelada</span>';
+                        }
+                    }
+                },
+                {
+                    targets: 6,
+                    data:6
+                },
+                {
+                    targets: 7,
+                    data:6,
+                    render: function(data, type, row){
+                        console.log(row);
+                        if(row[5] == 2){
+                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span>";
+                        }else if(row[5] == 0){
+                            return "<span><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                        }else{
+                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span>";
                         }
                     }
                 }
             ]
     })
 })
+
+function getPayments(id)
+{
+    $.ajax({
+        method:"POST",
+        url:"services/getPaymentsSup",
+        dataType:"json",
+        data:{
+            "invoice":id
+        },
+        success:function(response){
+            var table ="";
+            if(response.data.status == 204){
+                $('#errorModal').modal('show');
+            }else{
+                $.each(response.data.data, function(key, value){
+                    table += '<tr>'+
+                             '<td>'+value.Amount+'</td>'+
+                             '<td>'+value.Date+'</td>';
+
+                });
+                $('#body-payments').html(table);
+                $('#paymentsModal').modal('show');
+            }
+        }
+    })
+}
+
+function addPaymentModal(id,sup)
+{
+    $('#payModal').modal('show');
+    $('#idInvoice').val(id);
+    $('#idSup').val(sup);
+}
+
+function addPayment()
+{
+    $.ajax({
+        method:"POST",
+        url:"services/addPayment",
+        dataType:"json",
+        data:{
+            "id":$('#idInvoice').val(),
+            "amount":$('#amount').val(),
+            "idSup":$('#idSup').val()
+        },
+        success:function(response){
+            console.log(response.data.data);
+            if(response.data.data == 1){
+                $('#payModal').modal('hide');
+                $('#finalModal').modal('show');
+            }else if(response.data.data == 2){
+                $('#payModal').modal('hide');
+                $('#mayorModal').modal('show');
+            }else{
+                $('#payModal').modal('hide');
+                $('#addModal').modal('show');
+            }
+        }
+    })
+}
+
+function reopen(){
+    $('#mayorModal').modal('hide');
+    $('#payModal').modal('show');
+}

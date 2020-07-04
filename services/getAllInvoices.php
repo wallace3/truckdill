@@ -1,5 +1,9 @@
 <?php
 
+session_name ("TRUCK");
+session_start();
+
+
 /*
  * DataTables example server-side processing script.
  *
@@ -19,7 +23,7 @@
  */
 
 // DB table to use
-$table = 'suppliers';
+$table = 'invoices';
 
 // Table's primary key
 $primaryKey = 'ID_Supplier';
@@ -29,14 +33,15 @@ $primaryKey = 'ID_Supplier';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => '`x`.`supplier`', 'dt' => 0, 'field' => 'supplier' ),
-	array( 'db' => '`x`.`servs`',   'dt' => 1, 'field' => 'servs' ),
-    array( 'db' => '`x`.`legal`',  'dt' => 2, 'field' => 'legal' ),
-    array( 'db' => '`x`.`rfc`',  'dt' => 3, 'field' => 'rfc' ),
-    array( 'db' => '`x`.`Status`',  'dt' => 4, 'field' => 'Status' ),
-    array( 'db' => '`x`.`user`',  'dt' => 5, 'field' => 'user' ),
-    array( 'db' => '`x`.`idsup`',  'dt' => 6, 'field' => 'idsup' )
-
+    array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
+    array( 'db' => '`x`.`Rfc`', 'dt' => 1, 'field' => 'Rfc' ),
+	array( 'db' => '`x`.`Description`',   'dt' => 2, 'field' => 'Description' ),
+    array( 'db' => '`x`.`Amount`',  'dt' => 3, 'field' => 'Amount' ),
+    array( 'db' => '`x`.`Date`',  'dt' => 4, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status'),
+    array( 'db' => '`x`.`restante`',  'dt' => 6, 'field' => 'restante'),
+    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 7, 'field' => 'ID_Supplier'),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 8, 'field' => 'ID_Invoice')
 );
 
 // SQL server connection information
@@ -58,13 +63,12 @@ require('ssp.customized.class.php' );
 
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
-$joinQuery = "FROM(
-    SELECT sup.Supplier supplier, us.ID_User user, sup.ID_Supplier idsup, us.Status, sup.Rfc rfc, sup.Legal legal, GROUP_CONCAT(serv.Service) servs FROM `suppliers` AS `sup` 
-    JOIN `users` AS `us` ON (`us`.`ID_User` = `sup`.`ID_User`) 
-    LEFT JOIN `suppliers_has_services` AS `sups` ON (`sups`.`ID_Supplier` = `sup`.`ID_Supplier`) 
-    LEFT JOIN `services` AS `serv` ON (`serv`.`ID_Service` = `sups`.`ID_Service`) 
-    GROUP BY sup.ID_Supplier
-) x";
+$joinQuery = "FROM (
+                SELECT i.Description, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
+                FROM invoices i
+                JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
+                LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice
+                GROUP BY i.ID_Invoice) x";
 $extraWhere = "";
 $groupBy = "";
 $having = "";

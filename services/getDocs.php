@@ -62,7 +62,7 @@ require('ssp.customized.class.php' );
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
 $joinQuery = "FROM(
-                SELECT doc.ID_Document, doc.ID_Supplier, doc.Date, doc.Url, sup.Supplier, DATEDIFF('".$todate."', NOW()) restante FROM `document` AS `doc` 
+                SELECT doc.ID_Document, doc.ID_Supplier, doc.Date, doc.Url, sup.Supplier, DATEDIFF('".$todate."', doc.Date) restante FROM `document` AS `doc` 
                 LEFT JOIN `suppliers` AS `sup` ON (`sup`.`ID_Supplier` = `doc`.`ID_Supplier`)
                 ) x";
 $extraWhere = "";

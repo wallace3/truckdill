@@ -38,8 +38,6 @@ $(document).ready(function(){
         form_data.append('file', file_data);
 
         $('#upload').on('click',function(){
-            console.log(form_data);
-            
             $.ajax({
                 method:'POST',
                 processData: false,
@@ -47,9 +45,16 @@ $(document).ready(function(){
                 cache: false,
                 url:'services/saveDoc',
                 data:form_data,
+                dataType:"json",
                 success:function(response){
-                    console.log(response);
-                    $("#doc-table").DataTable().ajax.reload(null, false);
+                    if(response.status === 1005){
+                        $('#modalPdf').modal('show');
+                    }else{
+                        $('#filePdf').val('');
+                        $('#fileName').text('');
+                        $('#exitoPdf').modal('show');
+                        $("#doc-table").DataTable().ajax.reload(null, false);
+                    }
                 }
             });
         });

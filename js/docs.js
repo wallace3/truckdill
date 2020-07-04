@@ -30,6 +30,13 @@ $(document).ready(function(){
                             return '<span class="badge badge-success">Activo</span>'
                         }
                     }
+                },
+                {
+                    targets: 5,
+                    data:2,
+                    render: function(data, type){
+                       return '<a href="'+data+'" TARGET="_BLANK"><i class="fas fa-download" style="color:#757575;"></i></a>';  
+                    }
                 }
             ]
     })

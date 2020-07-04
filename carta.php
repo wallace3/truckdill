@@ -36,7 +36,7 @@
                     <?php include "topBarBase.php" ?>
                     <div id = "content-wrapper" class ="container-fluid">
                         <!--Contenido-->
-                        <div class = "row">
+                        <div class = "row" style="margin-bottom:10px;">
                             <div class = "col-md-6">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -87,21 +87,39 @@
 
         <!--Modals-->
 
-        <div class="modal" id="payModal" tabindex="-1" role="dialog">
+        <div class="modal" id="modalPdf" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Error</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label>Monto</label>
-                        <input type = "text" id="monto" class = "form-control">
+                        <label>Error Tipo Archivo</label>
+                        <p>Ingresa Formato PDF</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Realizar Pago</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="exitoPdf" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Éxito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se ha subido archivo exitosamente</p>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>

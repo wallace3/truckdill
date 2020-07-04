@@ -43,46 +43,32 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Facturas</h6>
                                     </div>
                                     <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="dataTable">
+                                        <table class="table align-items-center table-flush" id="invoices-table">
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>Proveedor</th>
-                                                    <th>Servicio</th>
+                                                    <th>RFC</th>
+                                                    <th>Descripción</th>
                                                     <th>Monto</th>
-                                                    <th>Restante</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
+                                                    <th>Restante</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th>Proveedor</th>
-                                                    <th>Servicio</th>
+                                                    <th>RFC</th>
+                                                    <th>Descripción</th>
                                                     <th>Monto</th>
-                                                    <th>Restante</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
+                                                    <th>Restante</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
-                                                <tr>
-                                                    <td>Haley Kennedy</td>
-                                                    <td>Senior Marketing Designer</td>
-                                                    <td>$4,300.00</td>
-                                                    <td>$4,300.00</td>
-                                                    <td>2020-08-01</td>
-                                                    <td><span class = "badge badge-danger">Pendiente</span></td>
-                                                    <td>
-                                                        <i class="far fa-money-bill-alt" data-toggle="modal" data-target="#payModal" style="color:#66bb6a"></i>
-                                                        <i class="fas fa-info-circle" style="color:#6777EF"></i>
-                                                        <i class="fas fa-minus-circle" style="color:#fc544b;"></i>
-                                                        <i class="fas fa-download" style="color:#757575;"></i>
-                                                        <i class="fas fa-upload" style="color:#757575;"></i>
-                                                        <i class="far fa-edit"></i>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -98,21 +84,136 @@
 
         <!--Modals-->
 
+        <div class="modal" id="paymentsModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pagos Registrados</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class = "table-responsive p3">
+                            <table class="table align-items-center table-flush" id="dataTable">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Monto</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body-payments">
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Monto</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>No Hay Pagos Registrados</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal" id="payModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Agregar Pago</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <label>Monto</label>
-                        <input type = "text" id="monto" class = "form-control">
+                        <input type = "number" id="amount" class = "form-control" step="0.01">
+                        <input type = "hidden" id="idInvoice">
+                        <input type = "hidden" id="idSup">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Realizar Pago</button>
+                        <button type="button" class="btn btn-primary" onclick="addPayment();">Realizar Pago</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="finalModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Último Pago</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ha terminado de pagar la factura</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="mayorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>La cantidad que ha ingresado supera al monto total de la factura</p>
+                        <p>Ingrese otro monto</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="reopen()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="addModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Éxito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se ha realizado pago con éxito</p>
+                    </div>
+                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
@@ -132,13 +233,7 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="js/facturas.js"></script>
 
-        <!-- Page level custom scripts -->
-        <script>
-            $(document).ready(function () {
-            $('#dataTable').DataTable(); // ID From dataTable 
-            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-            });
-        </script>
     </body>
 </html>

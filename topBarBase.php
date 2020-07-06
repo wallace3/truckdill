@@ -19,7 +19,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i class="fas fa-search fa-fw"></i>
+                  <!--<i class="fas fa-search fa-fw"></i>-->
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -171,7 +171,7 @@
                   >
                 </div>
               </li>
-              <li class="nav-item dropdown no-arrow mx-1">
+              <!--li class="nav-item dropdown no-arrow mx-1">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
@@ -251,7 +251,7 @@
                     >View All Taks</a
                   >
                 </div>
-              </li>
+              </li>-->
               <div class="topbar-divider d-none d-sm-block"></div>
               <li class="nav-item dropdown no-arrow">
                 <a
@@ -278,22 +278,14 @@
                 >
                   <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
+                    Perfil
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout">
                     <i
                       class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
                     ></i>
-                    Logout
+                    Cerrar Sesión
                   </a>
                 </div>
               </li>

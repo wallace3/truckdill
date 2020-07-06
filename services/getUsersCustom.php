@@ -32,7 +32,8 @@ $columns = array(
 	array( 'db' => '`u`.`Username`', 'dt' => 0, 'field' => 'Username' ),
 	array( 'db' => '`u`.`Email`',  'dt' => 1, 'field' => 'Email' ),
 	array( 'db' => '`ud`.`Type`',   'dt' => 2, 'field' => 'Type' ),
-	array( 'db' => '`u`.`Status`',     'dt' => 3, 'field' => 'Status')
+	array( 'db' => '`u`.`Status`',     'dt' => 3, 'field' => 'Status'),
+	array( 'db' => '`u`.`ID_User`',     'dt' => 4, 'field' => 'ID_User'),
 );
 
 // SQL server connection information

@@ -30,8 +30,14 @@ $(document).ready(function() {
                     },
                     {
                         targets: 4,
-                        data: null,
-                        defaultContent: "<button id='block' onclick='blocUser()' type='button' style='background-color:transparent;border:none;'><i class='fas fa-ban' style='color:#fc544b;'></i></button>"
+                        data: 4,
+                        render: function(data, type, row){
+                            if(row[3]==1){
+                                return '<span onclick="blockUser('+data+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span>';
+                            }else{
+                                return '<span onclick="activeUser('+data+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
+                            }
+                        } 
                     } 
 
                 ]
@@ -128,14 +134,8 @@ function validate(value, type){
             valElemento(value,"add");
             return false;
             break;
-
-            
-        
-    
         }
-    
-    
-    
+
 }
 function valElemento(id,action){
     //console.log(action);
@@ -153,33 +153,41 @@ function valElemento(id,action){
 
 }
 
-/*function getUsers()
-{
+function blockUser(id){
     $.ajax({
-        url:"services/getUsers",
-        method: "GET",
+        method:"POST",
+        url:"services/blockUser",
         dataType:"json",
+        data:{
+            "id":id
+        },
         success:function(response){
-            var datos = "";
-            var span  = "";
-            
-            $.each(response.data.data, function(index, value){
-                if(value.Status == 1){
-                    span = '<span class = "badge badge-success">Activo</span>';
-                }else{
-                    span = '<span class = "badge badge-danger">Suspendido</span>';
-                }
-                datos += 
-                    '<tr>'+
-                        '<td>'+value.Username+'</td>'+
-                        '<td>'+value.Email+'</td>'+
-                        '<td>'+value.Type+'</td>'+
-                        '<td>'+span+'</td>'+
-                        '<td><button id="block" onclick="blocUser('+value.ID_User+')" type="button" style="background-color:transparent;border:none;"><i class="fas fa-ban" style="color:#fc544b;"></i></button></td>'+
-                    '</tr>';    
-            });
-            //console.log(datos);
-            //$('#user-body').html(datos);
+            if(response.status == 200){
+                $('#blockModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+            $("#dataTable").DataTable().ajax.reload(null, false);
         }
     })
-}*/
+}
+
+function activeUser(id)
+{
+    $.ajax({
+        method:"POST",
+        url:"services/activeUser",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#successModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+            $("#dataTable").DataTable().ajax.reload(null, false);
+        }
+    })
+}

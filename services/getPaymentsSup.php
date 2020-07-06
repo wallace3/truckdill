@@ -2,6 +2,8 @@
 
     $invoice = $_POST['invoice'];
 
+    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+
     $json = [
         "id" => $invoice
     ];

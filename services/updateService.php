@@ -1,5 +1,7 @@
 <?php
 
+    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+    
     $json = [
         "id" => $_POST['id'],
         "service" => $_POST['service']

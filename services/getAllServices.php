@@ -1,5 +1,8 @@
 <?php
 
+
+    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+
     $curl = curl_init();
 
     curl_setopt_array($curl, [

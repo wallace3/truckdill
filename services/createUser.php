@@ -3,6 +3,8 @@
 	session_name ("TRUCK");
 	session_start();
 
+	$actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+
     $json = [
             "username" => $_POST['user'],
             "password" => sha1($_POST['pass']),

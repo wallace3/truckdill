@@ -4,6 +4,8 @@
     $current = date("Y-m-d H:i:s");
     $services = [];
 
+    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+
     foreach($_POST['services'] as $s){
         array_push($services, array('ID_Service' => $s));
     }

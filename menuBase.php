@@ -27,7 +27,7 @@
       <!-- MENU PROVEEDORES -->
       
       <?php 
-        if($_SESSION['idUsuario']==1){ 
+        if($_SESSION['idType']==1){ 
         
           echo '    <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#proveedoresTab" aria-expanded="true"
@@ -55,7 +55,7 @@
       <!-- MENU USUARIOS -->
 
       <?php 
-        if($_SESSION['idUsuario']==1){ 
+        if($_SESSION['idType']==1){ 
 
           echo '  <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#usuariosTab" aria-expanded="true"
@@ -82,7 +82,7 @@
       ?>
     
       <?php 
-        if($_SESSION['idUsuario']==4){
+        if($_SESSION['idType']==4){
           echo '
           <li class="nav-item">
             <a class="nav-link" href="carta">
@@ -96,7 +96,7 @@
         
       <?php  
       
-        if($_SESSION['idUsuario']==4){
+        if($_SESSION['idType']==4){
 
           echo '<li class="nav-item">
           <a class="nav-link" href="facturas_proveedor">

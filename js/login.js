@@ -5,7 +5,7 @@ $(document).ready(function() {
             try{
                 var res = JSON.parse(data);
             }catch{
-                show_toast('Error del Sistema', 'Estamos presentado problemas técnicos. Intenta más tarde', 'error');
+                $('#error').modal('show');
                 return;
             }
             
@@ -20,7 +20,7 @@ $(document).ready(function() {
                     $('#error-pass').show();
                     $('#error-user').hide();
                 }
-                show_toast('Error de Ingreso', res.message, 'warning');
+                $('#error').modal('show');
             }
                 
         });

@@ -39,7 +39,10 @@ $(document).ready(function(){
                 },
                 {
                     targets: 6,
-                    data:6
+                    data:6,
+                    render: function(data,type,row){
+                        return row[3] - data;
+                    }
                 },
                 {
                     targets: 7,
@@ -109,12 +112,16 @@ function addPayment()
             if(response.data.data == 1){
                 $('#payModal').modal('hide');
                 $('#finalModal').modal('show');
+                $('#amount').val('');
+                $("#invoices-table").DataTable().ajax.reload(null, false);
             }else if(response.data.data == 2){
                 $('#payModal').modal('hide');
                 $('#mayorModal').modal('show');
             }else{
                 $('#payModal').modal('hide');
                 $('#addModal').modal('show');
+                $('#amount').val('');
+                $("#invoices-table").DataTable().ajax.reload(null, false);
             }
         }
     })

@@ -36,46 +36,20 @@
                     <div id = "content-wrapper" class ="container-fluid">
 
                         <!--Contenido-->
-                        
                         <div class="card mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Alta de Usuarios</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Subir Factura</h6>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="correo" placeholder="Email" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Usuario</label>
-                                    <div class="col-sm-9">
-                                        <input type="email" class="form-control" id="usuario" placeholder="Usuario" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Tipo de usuario</label>
-                                    <div class = "col-sm-9">
-                                        <select class="form-control mb-3 types" id="types" required>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="password" placeholder="Password" required>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-10">
-                                        <button type="button" onclick="createUser();" class="btn btn-primary">Crear</button>
+                                <div class  = "form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="upload" style='cursor:pointer'>Subir</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" multiple="multiple" id="filePdf" >
+                                            <label class="custom-file-label" for="customFileLangHTML" id="fileName" data-browse="Seleccionar Archivo">Seleccionar Archivo</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -94,15 +68,51 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">Éxito</h5>
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se han subido archivos correctamente</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="relocate();">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalIngreso" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error en Archivos</h5>
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ingresa Formato PDF y XML (no acepta otro formato)</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="reload();">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalXml" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error en Archivos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Registro guardado exitosamente</p>
+                        <p>Por favor incluye archivo en formato XML</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-secondary" onclick="reload();">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -112,16 +122,16 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Éxito</h5>
+                        <h5 class="modal-title">Error</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Ocurrio un error al crear usuario</p>
+                        <p>Ha ocurrido un error contactar a servicio</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" onclick="reload();">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -138,7 +148,7 @@
         <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
         <script src="template/js/ruang-admin.min.js"></script>
-        <script src="js/facturas.js"></script>
+        <script src="js/altaFacturas.js"></script>
 
      
     </body>

@@ -48,7 +48,7 @@
                                                 <tr>
                                                     <th>Proveedor</th>
                                                     <th>RFC</th>
-                                                    <th>Descripción</th>
+                                                    <th>Fecha Sistema</th>
                                                     <th>Monto</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
@@ -60,7 +60,7 @@
                                                 <tr>
                                                     <th>Proveedor</th>
                                                     <th>RFC</th>
-                                                    <th>Descripción</th>
+                                                    <th>Fecha Sistema</th>
                                                     <th>Monto</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>

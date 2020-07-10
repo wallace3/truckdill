@@ -35,7 +35,7 @@ $primaryKey = 'ID_Supplier';
 $columns = array(
     array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
     array( 'db' => '`x`.`Rfc`', 'dt' => 1, 'field' => 'Rfc' ),
-	array( 'db' => '`x`.`Description`',   'dt' => 2, 'field' => 'Description' ),
+	array( 'db' => '`x`.`Date_Upload`',   'dt' => 2, 'field' => 'Date_Upload' ),
     array( 'db' => '`x`.`Amount`',  'dt' => 3, 'field' => 'Amount' ),
     array( 'db' => '`x`.`Date`',  'dt' => 4, 'field' => 'Date' ),
     array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status'),
@@ -64,7 +64,7 @@ require('ssp.customized.class.php' );
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
 $joinQuery = "FROM (
-                SELECT i.Description, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
+                SELECT i.Description, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
                 FROM invoices i
                 JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
                 LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice

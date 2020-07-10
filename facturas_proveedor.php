@@ -42,13 +42,19 @@
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                         <h6 class="m-0 font-weight-bold text-primary">Mis Facturas</h6>
                                     </div>
+                                    <div style="text-align:right;margin-right:20px">
+                                        <a href = "alta_facturas">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-plus">Subir Factura</i>
+                                            </button>
+                                        </a>
+                                    </div>
                                     <div class="table-responsive p-3">
                                         <table class="table align-items-center table-flush" id="dataTable">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>Descripción</th>
                                                     <th>Monto</th>
-                                                    <th>Fecha</th>
+                                                    <th>Fecha Factura</th>
                                                     <th>Estatus</th>
                                                     <th>Acciones</th>
                                                 </tr>
@@ -57,9 +63,8 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Descripción</th>
                                                     <th>Monto</th>
-                                                    <th>Fecha</th>
+                                                    <th>Fecha Factura</th>
                                                     <th>Estatus</th>
                                                     <th>Acciones</th>
                                                 </tr>

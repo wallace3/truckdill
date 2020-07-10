@@ -6,18 +6,14 @@ $(document).ready(function(){
             columns:[
                 {
                     targets: 0,
-                    data: 0
-                },
-                {
-                    targets: 1,
                     data: 1
                 },
                 {
-                    targets: 2,
+                    targets: 1,
                     data: 2
                 },
                 {
-                    targets: 3,
+                    targets: 2,
                     data: 3,
                     render: function(data, type){
                         if(data == 1){
@@ -30,7 +26,7 @@ $(document).ready(function(){
                     }
                 },
                 {
-                    targets: 4,
+                    targets: 3,
                     data:4,
                     render: function(data, type, row){
                         if(row[3] != "0"){

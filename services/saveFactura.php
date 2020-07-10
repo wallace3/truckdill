@@ -38,8 +38,8 @@
                 $GLOBALS['fecha'] = $array['@attributes']['Fecha'];
             }else{
                 move_uploaded_file($file['tmp_name'], 'docs/'.$folder.'/' . $file['name']);
-                $link =  $actual_link.'/truckdill/services/docs/'.$folder.'/'.$file['name'];
-                $GLOBALS['link'] = $link;
+                $link2 =  $actual_link.'/truckdill/services/docs/'.$folder.'/'.$file['name'];
+                $GLOBALS['link2'] = $link2;
             }
         }
     }else{
@@ -55,7 +55,7 @@
         "Description" => "",
         "Date" =>  $GLOBALS['fecha'],
         "Status" => 1,
-        "Url" => $GLOBALS['link'],
+        "Url" => $GLOBALS['link2'],
         "Date_Upload" => $current = date("Y-m-d H:i:s")
     ];
 

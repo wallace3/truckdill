@@ -50,11 +50,11 @@ $(document).ready(function(){
                     render: function(data, type, row){
                         console.log(row);
                         if(row[5] == 2){
-                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span>";
+                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
                         }else if(row[5] == 0){
-                            return "<span><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                            return "<span><i class='fas fa-window-close' style='color:#fc544b'></i></span><a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
                         }else{
-                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span>";
+                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[9]+"' target='_blank'><i class='fas fa-download'></i></a>";
                         }
                     }
                 }

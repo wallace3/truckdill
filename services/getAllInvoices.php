@@ -41,7 +41,8 @@ $columns = array(
     array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status'),
     array( 'db' => '`x`.`restante`',  'dt' => 6, 'field' => 'restante'),
     array( 'db' => '`x`.`ID_Supplier`',  'dt' => 7, 'field' => 'ID_Supplier'),
-    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 8, 'field' => 'ID_Invoice')
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 8, 'field' => 'ID_Invoice'),
+    array( 'db' => '`x`.`Url`',  'dt' => 9, 'field' => 'Url'),
 );
 
 // SQL server connection information
@@ -64,7 +65,7 @@ require('ssp.customized.class.php' );
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
 $joinQuery = "FROM (
-                SELECT i.Description, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
+                SELECT i.Description, i.Url, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
                 FROM invoices i
                 JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
                 LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice

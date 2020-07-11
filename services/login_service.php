@@ -32,7 +32,7 @@
 	$responseJson	= json_decode($response);
 	curl_close($curl);
 
-	if((sha1($_POST['password']) == $responseJson->data[0]->Password))
+	if((sha1($_POST['password']) == $responseJson->data[0]->Password) && $responseJson->data[0]->Status == 1)
 	{
 		$_SESSION['idUsuario'] = $responseJson->data[0]->ID_User;
 		$_SESSION['userName'] = $responseJson->data[0]->Username;
@@ -77,7 +77,7 @@
 	}else{
 		die(json_encode([
 			"status" => 1002,
-			"message" => "Password Incorrecto"
+			"message" => "Password Incorrecto o Usuario Inhabilitado"
 		]));
 	}
 

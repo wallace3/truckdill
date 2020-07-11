@@ -1,3 +1,4 @@
+<?php require ('services/session_check.php');?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,11 +27,14 @@
 
   <body id="page-top">
     <div id="wrapper">
+    <?php  include "menuBase.php"?>
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
+        <?php include "topBarBase.php" ?>
 
           <!--Contenido-->
-          <div class="container-login">
+          <div id = "content-wrapper" class ="container-fluid">
+          
             <div class="row justify-content-center">
               <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card shadow-sm my-5">
@@ -63,6 +67,62 @@
           </div>
           <!---Fin de Contenido-->
         </div>
+        <?php include "footerBase.php"?>
+
+      </div>
+    </div>
+
+    <div class="modal" id="error" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Ha ocurrido un error, intente mas tarde</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="exito" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Exito</h5>
+            </div>
+            <div class="modal-body">
+                <p>Se ha actualizado contraseña correctamente</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="logout()">Cerrar</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="pass" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Las contraseñas no coinciden</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"  data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
       </div>
     </div>
 
@@ -74,6 +134,7 @@
     <script src="template/vendor/jquery/jquery.min.js"></script>
     <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="template/js/ruang-admin.min.js"></script>
     <script src = "js/changePassword.js"></script>
   </body>
 </html>

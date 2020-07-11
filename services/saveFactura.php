@@ -14,6 +14,14 @@
         mkdir('docs/'.$folder.'', 0755, true);
     }
 
+    if(sizeof($_FILES) > 2 || sizeof($_FILES) < 2){
+        die(json_encode([
+            "status" => 1007,
+            "message" => "Ingresa dos archivos"
+        ]));
+    }
+
+
     foreach($_FILES as $file){
         if($file['type'] != 'application/pdf' && $file['type'] != 'text/xml'){
             die(json_encode([

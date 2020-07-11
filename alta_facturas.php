@@ -51,6 +51,7 @@
                                             <label class="custom-file-label" for="customFileLangHTML" id="fileName" data-browse="Seleccionar Archivo">Seleccionar Archivo</label>
                                         </div>
                                     </div>
+                                    <p>* Ingresa archivo XML y PDF</p>
                                 </div>
                             </div>
                         </div>
@@ -110,6 +111,25 @@
                     </div>
                     <div class="modal-body">
                         <p>Por favor incluye archivo en formato XML</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="reload();">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modalMax" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error en Archivos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Por favor ingresa solo dos archivos, PDF Y XML</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" onclick="reload();">Cerrar</button>

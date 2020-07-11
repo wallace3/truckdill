@@ -5,7 +5,7 @@ $(document).ready(function() {
             try{
                 var res = JSON.parse(data);
             }catch{
-                $('#error').modal('show');
+                $('#error-user').modal('show');
                 return;
             }
             
@@ -20,7 +20,7 @@ $(document).ready(function() {
                     $('#error-pass').show();
                     $('#error-user').hide();
                 }
-                $('#error').modal('show');
+                $('#error-user').modal('show');
             }
                 
         });

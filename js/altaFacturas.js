@@ -30,9 +30,10 @@ $(document).ready(function(){
                         $('#modalIngreso').modal('show');
                     }else if(response.status === 200){
                         $('#modalSuccess').modal('show');
-                    }                    
-                    else if(response.status === 1006){
+                    }else if(response.status === 1006){
                         $('#modalXml').modal('show');
+                    }else if(response.status === 1007){
+                        $('#modalMax').modal('show');
                     }
                     else{
                         $('#modalError').modal('show');

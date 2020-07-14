@@ -52,9 +52,9 @@ $(document).ready(function(){
                         if(row[5] == 2){
                             return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
                         }else if(row[5] == 0){
-                            return "<span><i class='fas fa-window-close' style='color:#fc544b'></i></span><a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
+                            return "<a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
                         }else{
-                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[9]+"' target='_blank'><i class='fas fa-download'></i></a>";
+                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[9]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[8]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
                         }
                     }
                 }
@@ -124,6 +124,26 @@ function addPayment()
                 $("#invoices-table").DataTable().ajax.reload(null, false);
             }
         }
+    })
+}
+
+function cancelInvoice(id){
+    $.ajax({
+        method:"POST",
+        url:"services/cancelInvoice",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#cancelModal').modal('show');
+                $("#invoices-table").DataTable().ajax.reload(null, false);
+            }else{
+                $('#cancelerrorModal').modal('show');
+            }
+        }
+
     })
 }
 

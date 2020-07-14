@@ -18,12 +18,7 @@
         Menú
       </div>
      
-      <li class="nav-item">
-        <a class="nav-link" href="">
-          <i class="fab fa-fw fa-wpforms"></i>
-          <span>Página 1</span>
-        </a>
-      </li>
+     
       <!-- MENU PROVEEDORES -->
       
       <?php 

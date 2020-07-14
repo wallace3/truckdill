@@ -39,7 +39,7 @@ $(document).ready(function(){
                         if(row[4]==1){
                             return '<span onclick="blockUser('+row[5]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="addServiceModal('+row[5]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span>';
                         }else{
-                            return '<span onclick="activeUser('+row[5]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span><span onclick="addServiceModal('+row[5]+');"><i class="fas fa-plus-square" style="color:##6777EF;"></i></span>';
+                            return '<span onclick="activeUser('+row[5]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
                         }
                     }
                 }

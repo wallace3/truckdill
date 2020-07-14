@@ -71,11 +71,11 @@ $joinQuery = "FROM(
                     doc.ID_Supplier, 
                     doc.Date, doc.Url, 
                     DATEDIFF('".$todate."', NOW()) restante 
-                FROM `document` AS `doc`) x";
-$extraWhere = "`x`.`ID_Supplier` = ".$user."";
+                FROM `document` AS `doc`
+                WHERE ID_Supplier =  ".$user." ORDER BY doc.Date Desc LIMIT 1 ) x";
+$extraWhere = "";
 $groupBy = "";
 $having = "";
-
 
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns, $joinQuery, $extraWhere, $groupBy, $having )

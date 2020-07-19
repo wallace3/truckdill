@@ -155,9 +155,11 @@
                     <div class="modal-body">
                         <div id = "infoServices">
                         </div>
+                        <input type = "hidden" id="idSupplier">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                        <button type="button" class="btn btn-primary" onclick="addServices();">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,7 @@
 var array_services = [];
+var array_services_general = [];
+var array_ids = [];
+var array_all = [];
 $(document).ready(function(){
     $('#dataTable').DataTable({
         processing: true,
@@ -37,7 +40,7 @@ $(document).ready(function(){
                     data:5,
                     render: function(data, type, row){
                         if(row[4]==1){
-                            return '<span onclick="blockUser('+row[5]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="addServiceModal('+row[5]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span>';
+                            return '<span onclick="blockUser('+row[5]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="addServiceModal('+row[6]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span>';
                         }else{
                             return '<span onclick="activeUser('+row[5]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
                         }
@@ -91,27 +94,29 @@ function activeUser(id)
 
 function addServiceModal(id)
 {
+    select = "";
     $('#serviceModal').modal('show');
     $('#idSupplier').val(id);
     getServicesSuppliers(id);
-
 }
 
 function getServices()
 {    
-    info = "";
+    select = "";
     $.ajax({
         method:"POST",
         url:"services/getAllServices",
         dataType:"json",
         success:function(response){
             response.data.data.forEach(element => {
-                info += '<div><label>'+element.Service+'</label><input type = "checkbox" class="services" name="services" value="'+element.ID_Service+'"></div>'
+                array_services_general.push(element.Service);
+                array_ids.push(element.ID_Service);
+                array_all = response.data.data;
+                select += '<div class="custom-control custom-checkbox">'+
+                    '<input type = "checkbox" class="custom-control-input services"  id='+element.Service+' name="services" value="'+element.ID_Service+'">'+
+                    '<label class="custom-control-label" for='+element.Service+' >'+element.Service+'</label></div>';
             });
-
-            
-            $('#infoServices').html(info);
-            console.log(response);
+            $('#infoServices').html(select);
         }
     })
 }
@@ -127,11 +132,48 @@ function getServicesSuppliers(id)
         },
         success:function(response){
             array_services = response.data.data;
-            console.log(array_services);
+
+            $("input[name='services']").each(function () {
+                $(this).prop('checked', false);
+            })
+
+           array_services_general.forEach( function(element, index, array){
+                if(typeof(array_services[index]) !=='undefined'){
+                    if(array_services_general.includes(array_services[index].Service)){
+                        $("input[type=checkbox][value="+array_services[index].ID_Service+"]").prop("checked",true)
+                    }
+                }   
+            }) 
         }
     })
 }
 
+function addServices(){
+    console.log("si entra");
+    var services = [];
+    $.each($("input[name='services']:checked"), function(){
+        services.push($(this).val());
+    });
+
+    console.log(services);
+
+    $.ajax({
+        method:"POST",
+        url:"services/updateServicesSup",
+        dataType:"json",
+        data:{
+            "services":services,
+            "id":$('#idSupplier').val()
+        },
+        success:function(response){
+            console.log(response);
+            if(response.status == 200){
+                $('#serviceModal').modal('hide');
+                $("#dataTable").DataTable().ajax.reload(null, false);
+            }
+        }
+    })
+}
 
 
 

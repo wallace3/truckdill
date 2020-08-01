@@ -1,4 +1,10 @@
-<?php require ('services/session_check.php');?>
+<?php 
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,6 +53,8 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>Proveedor</th>
+                                                    <th># Orden</th>
+                                                    <th>Empresa</th>
                                                     <th>RFC</th>
                                                     <th>Fecha Sistema</th>
                                                     <th>Monto</th>
@@ -59,6 +67,8 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>Proveedor</th>
+                                                    <th># Orden</th>
+                                                    <th>Empresa</th>
                                                     <th>RFC</th>
                                                     <th>Fecha Sistema</th>
                                                     <th>Monto</th>

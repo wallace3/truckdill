@@ -34,25 +34,38 @@ $primaryKey = 'ID_Supplier';
 // indexes
 $columns = array(
     array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Rfc`', 'dt' => 1, 'field' => 'Rfc' ),
-	array( 'db' => '`x`.`Date_Upload`',   'dt' => 2, 'field' => 'Date_Upload' ),
-    array( 'db' => '`x`.`Amount`',  'dt' => 3, 'field' => 'Amount' ),
-    array( 'db' => '`x`.`Date`',  'dt' => 4, 'field' => 'Date' ),
-    array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status'),
-    array( 'db' => '`x`.`restante`',  'dt' => 6, 'field' => 'restante'),
-    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 7, 'field' => 'ID_Supplier'),
-    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 8, 'field' => 'ID_Invoice'),
-    array( 'db' => '`x`.`Url`',  'dt' => 9, 'field' => 'Url'),
+    array( 'db' => '`x`.`Company`',  'dt' => 1, 'field' => 'Company'),
+    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
+    array( 'db' => '`x`.`Rfc`', 'dt' => 3, 'field' => 'Rfc' ),
+	array( 'db' => '`x`.`Date_Upload`',   'dt' => 4, 'field' => 'Date_Upload' ),
+    array( 'db' => '`x`.`Amount`',  'dt' => 5, 'field' => 'Amount' ),
+    array( 'db' => '`x`.`Date`',  'dt' => 6, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 7, 'field' => 'Status'),
+    array( 'db' => '`x`.`restante`',  'dt' => 8, 'field' => 'restante'),
+    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 9, 'field' => 'ID_Supplier'),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 10, 'field' => 'ID_Invoice'),
+    array( 'db' => '`x`.`Url`',  'dt' => 11, 'field' => 'Url'),
+    
+
 );
 
 // SQL server connection information
 //require('config.php');
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'truckdm',
-    'host' => 'localhost'
-);
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    $sql_details = array(
+        'user' => 'root',
+        'pass' => '',
+        'db'   => 'truckdm',
+        'host' => 'localhost'
+    );
+}else{
+    $sql_details = array(
+        'user' => 'dbu138194',
+        'pass' => 'f!Y#rm)xo+7=*',
+        'db'   => 'dbs519076',
+        'host' => 'db5000540604.hosting-data.io'
+    );
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
@@ -65,7 +78,7 @@ require('ssp.customized.class.php' );
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
 $joinQuery = "FROM (
-                SELECT i.Description, i.Url, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
+                SELECT i.Description, i.Url, i.Company, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date, s.Supplier, s.Rfc, COALESCE(ROUND(SUM(ps.Amount),2), 0) restante
                 FROM invoices i
                 JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
                 LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice

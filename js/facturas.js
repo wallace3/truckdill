@@ -26,7 +26,15 @@ $(document).ready(function(){
                 },
                 {
                     targets: 5,
-                    data: 5,
+                    data:5
+                },
+                {
+                    targets: 6,
+                    data:6
+                },
+                {
+                    targets: 7,
+                    data: 7,
                     render: function(data, type){
                         if(data == 1){
                             return '<span class="badge badge-primary">Pendiente</span>';
@@ -38,23 +46,23 @@ $(document).ready(function(){
                     }
                 },
                 {
-                    targets: 6,
-                    data:6,
+                    targets: 8,
+                    data:8,
                     render: function(data,type,row){
-                        return row[3] - data;
+                        return row[5] - data;
                     }
                 },
                 {
-                    targets: 7,
-                    data:6,
+                    targets: 9,
+                    data:9,
                     render: function(data, type, row){
                         console.log(row);
-                        if(row[5] == 2){
-                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
-                        }else if(row[5] == 0){
-                            return "<a href = '"+row[9]+"'><i class='fas fa-download'></i></a>";
+                        if(row[7] == 2){
+                            return "<span onclick='getPayments("+row[10]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[11]+"'><i class='fas fa-download'></i></a>";
+                        }else if(row[7] == 0){
+                            return "<a href = '"+row[11]+"'><i class='fas fa-download'></i></a>";
                         }else{
-                            return "<span onclick='getPayments("+row[8]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[8]+"&quot;,&quot;"+row[7]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[9]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[8]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                            return "<span onclick='getPayments("+row[10]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[10]+"&quot;,&quot;"+row[9]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[11]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[10]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
                         }
                     }
                 }

@@ -14,7 +14,15 @@ $(document).ready(function(){
                 },
                 {
                     targets: 2,
-                    data: 3,
+                    data: 3
+                },
+                {
+                    targets: 3,
+                    data: 4
+                },
+                {
+                    targets: 4,
+                    data: 5,
                     render: function(data, type){
                         if(data == 1){
                             return '<span class="badge badge-primary">Pendiente</span>';
@@ -26,8 +34,8 @@ $(document).ready(function(){
                     }
                 },
                 {
-                    targets: 3,
-                    data:4,
+                    targets: 5,
+                    data:6,
                     render: function(data, type, row){
                         if(row[3] != "0"){
                             return '<span onclick="getPayments('+data+')"><i class="fas fa-info-circle" style="color:#6777EF"></i></span>';

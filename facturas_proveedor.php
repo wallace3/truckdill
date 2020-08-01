@@ -1,4 +1,10 @@
-<?php require ('services/session_check.php');?>
+<?php 
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,6 +59,8 @@
                                         <table class="table align-items-center table-flush" id="dataTable">
                                             <thead class="thead-light">
                                                 <tr>
+                                                    <th># Orden</th>
+                                                    <th>Empresa</th>
                                                     <th>Monto</th>
                                                     <th>Fecha Factura</th>
                                                     <th>Estatus</th>

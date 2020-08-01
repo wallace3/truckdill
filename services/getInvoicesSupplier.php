@@ -34,10 +34,12 @@ $primaryKey = 'ID_Supplier';
 // indexes
 $columns = array(
     array( 'db' => '`i`.`Description`', 'dt' => 0, 'field' => 'Description' ),
-	array( 'db' => '`i`.`Amount`',   'dt' => 1, 'field' => 'Amount' ),
-    array( 'db' => '`i`.`Date`',  'dt' => 2, 'field' => 'Date' ),
-    array( 'db' => '`i`.`Status`',  'dt' => 3, 'field' => 'Status' ),
-    array( 'db' => '`i`.`ID_Invoice`',  'dt' => 4, 'field' => 'ID_Invoice' ),
+    array( 'db' => '`i`.`Company`',  'dt' => 1, 'field' => 'Company' ),
+    array( 'db' => '`i`.`Description`', 'dt' => 2, 'field' => 'Description' ),
+	array( 'db' => '`i`.`Amount`',   'dt' => 3, 'field' => 'Amount' ),
+    array( 'db' => '`i`.`Date`',  'dt' => 4, 'field' => 'Date' ),
+    array( 'db' => '`i`.`Status`',  'dt' => 5, 'field' => 'Status' ),
+    array( 'db' => '`i`.`ID_Invoice`',  'dt' => 6, 'field' => 'ID_Invoice' ),
 );
 
 // SQL server connection information

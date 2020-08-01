@@ -24,5 +24,44 @@ $(document).ready(function() {
             }
                 
         });
-    });  
+    }); 
+    
+    $('#changePassword').on('click',function(){
+        console.log("si entra");
+        console.log($('#userchange').val());
+        if($('#passwordNew').val() === $('#confirmpasswordNew').val()){
+            $.ajax({
+                method:"POST",
+                dataType:"json",
+                url:"services/changePasswordUsername",
+                data:{
+                    username:$('#userchange').val(),
+                    pass:$('#passwordNew').val()
+                },
+                success:function(response){
+                    if(response.status == 200){
+                        $('#exito').modal('show');
+                    }else{ 
+                        $('#error').modal('show');
+                    }
+                }
+            })
+        }else{
+            $('#pass').modal('show');
+        }
+    })
+
 });
+
+function changediv(){
+    $('.container-login').hide();
+    $('.container-forgot').show();
+}
+
+function confirm(){
+    $('.container-login').show();
+    $('.container-forgot').hide();
+    $('#exito').modal('hide');
+}
+
+

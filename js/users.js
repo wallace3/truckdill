@@ -91,7 +91,11 @@ if(bnd){
                 $('#types').val('')
                 $('#modalSuccess').modal('show');
             }else{
-                $('#modalError').modal('show');
+                if(response.status == 206){
+                    $('#duplicateModal').modal('show');
+                }else{
+                    $('#modalError').modal('show');
+                }
             }
         }
     })

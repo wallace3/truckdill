@@ -1,4 +1,10 @@
-<?php require ('services/session_check.php');?>
+<?php 
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,15 +49,28 @@
                             <div class="card-body">
                                 <div class  = "form-group">
                                     <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="upload" style='cursor:pointer'>Subir</span>
-                                        </div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" multiple="multiple" id="filePdf" >
                                             <label class="custom-file-label" for="customFileLangHTML" id="fileName" data-browse="Seleccionar Archivo">Seleccionar Archivo</label>
                                         </div>
                                     </div>
                                     <p>* Ingresa archivo XML y PDF</p>
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "orden">No. Orden</label>
+                                    <input type = "text" class = "form-control" id = "orden">
+                                </div>
+                                <div class = "form-group">
+                                    <label for = "empresa">Empresa Factura</label>
+                                    <select name  = "empresa" class = "form-control" id = "empresa">
+                                        <option value = "empresa1" selected>Empresa 1</option>
+                                        <option value = "empresa2">Empresa 2</option>
+                                    </select>
+                                </div>
+                                <div class  = "form-group">
+                                    <button class="btn" id = "upload" style = "background-color: #3f51b5;border-color: #3f51b5;color: #fff;">
+                                        Subir
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -77,6 +96,24 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" onclick="relocate();">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="allModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Obligatorios</h5>
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Todos los campos son obligatorios.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondar" data-dismiss = "modal">OK</button>
                     </div>
                 </div>
             </div>

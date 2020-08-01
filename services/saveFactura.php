@@ -60,17 +60,18 @@
     $json = [
         "ID_Supplier" => $user,
         "Amount" => $GLOBALS['amount'],
-        "Description" => "",
+        "Description" => $_POST['orden'],
         "Date" =>  $GLOBALS['fecha'],
         "Status" => 1,
         "Url" => $GLOBALS['link2'],
-        "Date_Upload" => $current = date("Y-m-d H:i:s")
+        "Date_Upload" => $current = date("Y-m-d H:i:s"),
+        "Company" => $_POST['empresa']
     ];
 
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "http://127.0.0.1/truckdmback/Invoices/add",  
+        CURLOPT_URL => $actual_link."/truckdmback/Invoices/add",  
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,

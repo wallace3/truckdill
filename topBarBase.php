@@ -276,9 +276,15 @@
                   class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                   aria-labelledby="userDropdown"
                 >
+                  <?php if( $_SESSION['tipo'] == 'Proveedor'){ ?>
+                  <a class="dropdown-item" href="editar_proveedor">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Editar Información
+                  </a>
+                  <?php } ?>
                   <a class="dropdown-item" href="cambiar_contraseña">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Perfil
+                    Cambiar Contraseña
                   </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="logout">

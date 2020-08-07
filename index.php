@@ -11,7 +11,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="template/img/logo/logo.png" rel="icon" />
-    <title>TruckDill </title>
+    <title>TruckDrill </title>
     <link
       href="template/vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"

@@ -34,8 +34,8 @@ $primaryKey = 'ID_Supplier';
 // indexes
 $columns = array(
     array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Company`',  'dt' => 1, 'field' => 'Company'),
-    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
+    array( 'db' => '`x`.`Description`',  'dt' => 1, 'field' => 'Description'),
+    array( 'db' => '`x`.`Company`',  'dt' => 2, 'field' => 'Company'),
     array( 'db' => '`x`.`Rfc`', 'dt' => 3, 'field' => 'Rfc' ),
 	array( 'db' => '`x`.`Date_Upload`',   'dt' => 4, 'field' => 'Date_Upload' ),
     array( 'db' => '`x`.`Amount`',  'dt' => 5, 'field' => 'Amount' ),

@@ -13,7 +13,7 @@
 	$curl = curl_init();
 
 	curl_setopt_array($curl, [
-		CURLOPT_URL => "http://127.0.0.1/truckdmback/User/login",  
+		CURLOPT_URL => $actual_link."/truckdmback/User/login",  
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
 		CURLOPT_MAXREDIRS => 10,
@@ -67,6 +67,9 @@
 
 			$_SESSION['idSup'] = $responseSup->data[0]->ID_Supplier;
 			$_SESSION['Sup'] = $responseSup->data[0]->Supplier;	
+			$_SESSION['rfc'] = $responseSup->data[0]->Rfc;	
+			$_SESSION['legal'] = $responseSup->data[0]->Legal;	
+
 			
 		}
 		die(json_encode([

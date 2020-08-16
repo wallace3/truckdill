@@ -41,7 +41,7 @@
 	    $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => "http://127.0.0.1/truckdmback/Documents/".$action,  
+            CURLOPT_URL => $actualink."/truckdmback/Documents/".$action,  
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

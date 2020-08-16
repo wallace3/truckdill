@@ -9,12 +9,6 @@
     $user = $_SESSION['idSup'];
     $folder = $_SESSION['userName'];
     
-    if($_FILES['file']['type'] != 'application/pdf'){
-        die(json_encode([
-            "status" => 1005,
-            "message" => "Ingresa Formato PDF"
-        ]));
-    }
 
     if (!file_exists('docs/'.$folder.'')) {
         mkdir('docs/'.$folder.'', 0755, true);
@@ -35,7 +29,7 @@
         $json = [
             "ID_Supplier" => $user,
             "Date" => $current = date("Y-m-d H:i:s"),
-            "Url" => $actual_link.'/truckdill/services/docs/'.$folder.'/'.$_FILES['file']['name']
+            "Url" => $actual_link.'/services/docs/'.$folder.'/'.$_FILES['file']['name']
         ];
 
 	    $curl = curl_init();

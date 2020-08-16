@@ -30,23 +30,33 @@ $primaryKey = 'ID_Supplier';
 // indexes
 $columns = array(
     array( 'db' => '`x`.`supplier`', 'dt' => 0, 'field' => 'supplier' ),
-	array( 'db' => '`x`.`servs`',   'dt' => 1, 'field' => 'servs' ),
-    array( 'db' => '`x`.`legal`',  'dt' => 2, 'field' => 'legal' ),
-    array( 'db' => '`x`.`rfc`',  'dt' => 3, 'field' => 'rfc' ),
-    array( 'db' => '`x`.`Status`',  'dt' => 4, 'field' => 'Status' ),
-    array( 'db' => '`x`.`user`',  'dt' => 5, 'field' => 'user' ),
-    array( 'db' => '`x`.`idsup`',  'dt' => 6, 'field' => 'idsup' )
+    array( 'db' => '`x`.`supplier`', 'dt' => 1, 'field' => 'supplier' ),
+	array( 'db' => '`x`.`servs`',   'dt' => 2, 'field' => 'servs' ),
+    array( 'db' => '`x`.`legal`',  'dt' => 3, 'field' => 'legal' ),
+    array( 'db' => '`x`.`rfc`',  'dt' => 4, 'field' => 'rfc' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status' ),
+    array( 'db' => '`x`.`user`',  'dt' => 6, 'field' => 'user' ),
+    array( 'db' => '`x`.`idsup`',  'dt' => 7, 'field' => 'idsup' )
 
 );
 
 // SQL server connection information
 //require('config.php');
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'truckdm',
-    'host' => 'localhost'
-);
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    $sql_details = array(
+        'user' => 'root',
+        'pass' => '',
+        'db'   => 'truckdm',
+        'host' => 'localhost'
+    );
+}else{
+    $sql_details = array(
+        'user' => 'dbu138194',
+        'pass' => 'f!Y#rm)xo+7=*',
+        'db'   => 'dbs519076',
+        'host' => 'db5000540604.hosting-data.io'
+    );
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP

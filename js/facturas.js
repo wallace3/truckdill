@@ -1,5 +1,64 @@
 $(document).ready(function(){
-    $('#invoices-table').DataTable({
+
+    $('#invoices-table').ocDrawTable({
+        ajax: 'services/getAllInvoices',
+        dom: 'lfBrtip',
+        buttons: [
+            {
+                extend: 'csv',
+                text: 'Exportar',
+                className: "btn-primary",
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    modifier : {
+                    page : 'all'
+                    }
+                }
+            }
+        ],
+		setColumns:[
+			{
+				columns:[8],
+				render: function(data, type){
+                    if(data == 1){
+                        return '<span class="badge badge-primary">Pendiente</span>';
+                    }else if(data == 2){
+                        return '<span class="badge badge-success">Completada</span>';
+                    }else{
+                        return '<span class="badge badge-danger">Cancelada</span>';
+                    }
+                }
+			},
+			{
+				columns: [9],
+                render: function(data,type,row){
+                    return row[6] - data;
+                }
+            },
+            {
+				columns: [10],
+                render: function(data, type, row){
+                    console.log(row);
+                    if(row[8] == 2){
+                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
+                    }else if(row[7] == 0){
+                        return "<a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
+                    }else{
+                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                    }
+                }
+            },
+            {
+                columns: [1, 2, 3, 4, 5, 6, 7],
+                inputSearch: true
+            }
+		]
+	});
+
+
+
+
+    /*$('#invoices-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: "services/getAllInvoices",
@@ -67,7 +126,7 @@ $(document).ready(function(){
                     }
                 }
             ]
-    })
+    })*/
 })
 
 function getPayments(id)

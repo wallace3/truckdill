@@ -75,7 +75,11 @@
                           <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Cambio de Contraseña</h1>
                           </div>
-                            <div class="form-group">
+                            <p>Ingresa el correo con el que diste de alta tu usuario</p>
+                            <div class = "form-group">
+                              <input type="text" class="form-control" id="emailUser" placeholder="Ingresa tu Correo">
+                            </div>
+                            <!--<div class="form-group">
                               <input type="text" class="form-control" id="userchange" placeholder="Nombre de Usuario">
                             </div>
                             <div class="form-group">
@@ -83,14 +87,11 @@
                             </div>
                             <div class="form-group">
                               <input type="password" class="form-control" id="confirmpasswordNew" placeholder="Confirma Contraseña">
-                            </div>
+                            </div>-->
                             <div class="form-group">
                               <button type="button" id="changePassword" class="btn btn-primary btn-block">Cambiar</button>
                             </div>
                             <hr>
-                            <div class = "form-group">
-                              <span style="color:blue;text-decoration:underline;cursor:pointer;"  onclick="changediv();">¿Olvidaste tu Contraseña?</span></a>
-                            </div>
                         </div>
                       </div>
                     </div>
@@ -152,7 +153,7 @@
                   </button>
               </div>
               <div class="modal-body">
-                  <p>Ha ocurrido un error, intente mas tarde</p>
+                  <p>No existe correo electrónico o ha ocurrido un error</p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -168,7 +169,7 @@
                   <h5 class="modal-title">Exito</h5>
               </div>
               <div class="modal-body">
-                  <p>Se ha actualizado contraseña correctamente</p>
+                  <p>Se te ha enviado un correo electrónico con una contraseña temporal, verificar SPAM.</p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" onclick="confirm()">Cerrar</button>

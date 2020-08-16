@@ -1,4 +1,10 @@
-<?php require ('services/session_check.php');?>
+<?php 
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,8 +57,9 @@
                                     </div>
                                     <div class="table-responsive p-3">
                                         <table class="table align-items-center table-flush" id="dataTable">
-                                            <thead class="thead-light">
+                                            <thead>
                                                 <tr>
+                                                    <th>#</th>  
                                                     <th>Proveedor</th>
                                                     <th>Servicios</th>
                                                     <th>Representante</th>
@@ -176,6 +183,9 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="js/datatable.js"></script>
         <script src="js/proveedores.js"></script>
+        
+
     </body>
 </html>

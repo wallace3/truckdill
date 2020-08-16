@@ -32,37 +32,63 @@ $primaryKey = 'ID_Supplier';
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
+/*$columns = array(
+    array( 'db' => '`x`.`ID_Supplier`', 'dt' => 0, 'field' => 'ID_Supplier' ),
+    array( 'db' => '`x`.`Company`',  'dt' => 1, 'field' => 'Company' ),
+    array( 'db' => '`x`.`Description`', 'dt' => 2, 'field' => 'Description' ),
+	array( 'db' => '`x`.`Amount`',   'dt' => 3, 'field' => 'Amount' ),
+    array( 'db' => '`x`.`Date`',  'dt' => 4, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status' ),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 6, 'field' => 'ID_Invoice' ),
+);*/
+
 $columns = array(
-    array( 'db' => '`i`.`Description`', 'dt' => 0, 'field' => 'Description' ),
-    array( 'db' => '`i`.`Company`',  'dt' => 1, 'field' => 'Company' ),
-    array( 'db' => '`i`.`Description`', 'dt' => 2, 'field' => 'Description' ),
-	array( 'db' => '`i`.`Amount`',   'dt' => 3, 'field' => 'Amount' ),
-    array( 'db' => '`i`.`Date`',  'dt' => 4, 'field' => 'Date' ),
-    array( 'db' => '`i`.`Status`',  'dt' => 5, 'field' => 'Status' ),
-    array( 'db' => '`i`.`ID_Invoice`',  'dt' => 6, 'field' => 'ID_Invoice' ),
+    array( 'db' => '`x`.`ID_Supplier`', 'dt' => 0, 'field' => 'ID_Supplier' ),
+    array( 'db' => '`x`.`Company`',  'dt' => 1, 'field' => 'Company'),
+    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
+    array( 'db' => '`x`.`Amount`', 'dt' => 3, 'field' => 'Amount' ),
+	array( 'db' => '`x`.`Date`',   'dt' => 4, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 5, 'field' => 'Status' ),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 6, 'field' => 'ID_Invoice' )
 );
 
 // SQL server connection information
 //require('config.php');
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'truckdm',
-    'host' => 'localhost'
-);
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    $sql_details = array(
+        'user' => 'root',
+        'pass' => '',
+        'db'   => 'truckdm',
+        'host' => 'localhost'
+    );
+}else{
+    $sql_details = array(
+        'user' => 'dbu138194',
+        'pass' => 'f!Y#rm)xo+7=*',
+        'db'   => 'dbs519076',
+        'host' => 'db5000540604.hosting-data.io'
+    );
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
  */
 
-// require( 'ssp.class.php' );
+//require( 'ssp.class.php' );
 require('ssp.customized.class.php' );
 
 //SELECT *, GROUP_CONCAT(serv.Service) servs
 
-$joinQuery = "FROM `invoices` AS `i`";
-$extraWhere = "`i`.`ID_Supplier` = $idsup";
+$joinQuery = "FROM(
+    SELECT i.Description, i.Url, i.Company, i.Date_Upload, i.Status, i.ID_Supplier, i.ID_Invoice, i.Amount, i.Date
+    FROM invoices i
+    WHERE i.ID_Supplier = $idsup
+    ) x";
+
+
+//$joinQuery = "FROM `invoices` AS `i`";
+$extraWhere = "";
 $groupBy = "";
 $having = "";
 

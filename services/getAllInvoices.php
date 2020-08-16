@@ -34,17 +34,18 @@ $primaryKey = 'ID_Supplier';
 // indexes
 $columns = array(
     array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Description`',  'dt' => 1, 'field' => 'Description'),
-    array( 'db' => '`x`.`Company`',  'dt' => 2, 'field' => 'Company'),
-    array( 'db' => '`x`.`Rfc`', 'dt' => 3, 'field' => 'Rfc' ),
-	array( 'db' => '`x`.`Date_Upload`',   'dt' => 4, 'field' => 'Date_Upload' ),
-    array( 'db' => '`x`.`Amount`',  'dt' => 5, 'field' => 'Amount' ),
-    array( 'db' => '`x`.`Date`',  'dt' => 6, 'field' => 'Date' ),
-    array( 'db' => '`x`.`Status`',  'dt' => 7, 'field' => 'Status'),
-    array( 'db' => '`x`.`restante`',  'dt' => 8, 'field' => 'restante'),
-    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 9, 'field' => 'ID_Supplier'),
-    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 10, 'field' => 'ID_Invoice'),
-    array( 'db' => '`x`.`Url`',  'dt' => 11, 'field' => 'Url'),
+    array( 'db' => '`x`.`Supplier`', 'dt' => 1, 'field' => 'Supplier' ),
+    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
+    array( 'db' => '`x`.`Company`',  'dt' => 3, 'field' => 'Company'),
+    array( 'db' => '`x`.`Rfc`', 'dt' => 4, 'field' => 'Rfc' ),
+	array( 'db' => '`x`.`Date_Upload`',   'dt' => 5, 'field' => 'Date_Upload' ),
+    array( 'db' => '`x`.`Amount`',  'dt' => 6, 'field' => 'Amount' ),
+    array( 'db' => '`x`.`Date`',  'dt' => 7, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`',  'dt' => 8, 'field' => 'Status'),
+    array( 'db' => '`x`.`restante`',  'dt' => 9, 'field' => 'restante'),
+    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 10, 'field' => 'ID_Supplier'),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 11, 'field' => 'ID_Invoice'),
+    array( 'db' => '`x`.`Url`',  'dt' => 12, 'field' => 'Url'),
     
 
 );

@@ -3,7 +3,39 @@ var array_services_general = [];
 var array_ids = [];
 var array_all = [];
 $(document).ready(function(){
-    $('#dataTable').DataTable({
+
+    $('#dataTable').ocDrawTable({
+		ajax: 'services/getSuppliers',
+		setColumns:[
+			{
+				columns:[5],
+				render:function(data,type,row){
+                    if(data==1){
+                        return '<span class="badge badge-success">Activa</span>';
+                    }else{
+                        return '<span class="badge badge-danger">Suspendido</span>';
+                    }
+                }
+			},
+			{
+				columns: [6],
+				render: function(data, type, row){
+                    if(row[5]==1){
+                        return '<span onclick="blockUser('+row[6]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="addServiceModal('+row[7]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span>';
+                    }else{
+                        return '<span onclick="activeUser('+row[6]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
+                    }
+                }
+			},
+            {
+                columns: [1, 2, 3, 4],
+                inputSearch: true
+            }
+		]
+	});
+
+
+   /* $('#dataTable').ocDrawTable({
         processing: true,
         serverSide: true,
         ajax: "services/getSuppliers",
@@ -47,7 +79,8 @@ $(document).ready(function(){
                     }
                 }
             ]
-    })
+            
+    })*/
 
     getServices();
 });

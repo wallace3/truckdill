@@ -50,8 +50,9 @@
                                     </div>
                                     <div class="table-responsive p-3">
                                         <table class="table align-items-center table-flush" id="invoices-table">
-                                            <thead class="thead-light">
+                                            <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>Proveedor</th>
                                                     <th># Orden</th>
                                                     <th>Empresa</th>
@@ -66,6 +67,7 @@
                                             </thead>
                                             <tfoot>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>Proveedor</th>
                                                     <th># Orden</th>
                                                     <th>Empresa</th>
@@ -281,6 +283,12 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="js/datatable.js"></script>
         <script src="js/facturas.js"></script>
 
     </body>

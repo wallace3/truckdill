@@ -71,6 +71,8 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
+                                                    <th># Orden</th>
+                                                    <th>Empresa</th>
                                                     <th>Monto</th>
                                                     <th>Fecha Factura</th>
                                                     <th>Estatus</th>

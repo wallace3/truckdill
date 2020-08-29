@@ -2,19 +2,19 @@
 
     $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
     date_default_timezone_set("America/Mexico_City");
-    $current = date("Y-m-d H:i:s");
-
+    $current = date("H:i:s");
+    $date = $_POST['date'].' '.$current;
     $json = [
         "ID_Invoice" => $_POST['id'],
         "Amount"  => $_POST['amount'],
         "ID_Supplier" => $_POST['idSup'],
-        "Date" => $current
+        "Date" => $date
     ];
 
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-    CURLOPT_URL => "http://127.0.0.1/truckdmback/Payments/addPayment",  
+    CURLOPT_URL => $actual_link."/truckdmback/Payments/addPayment",  
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

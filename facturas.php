@@ -30,6 +30,7 @@
         />
         <link href="template/css/ruang-admin.min.css" rel="stylesheet" />
         <link href="template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
 
     </head>
 
@@ -61,8 +62,9 @@
                                                     <th>Monto</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
-                                                    <th>Restante</th>
+                                                    <th>Total Pagado</th>
                                                     <th>Acciones</th>
+                                                    <th>Restante</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
@@ -76,8 +78,9 @@
                                                     <th>Monto</th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
-                                                    <th>Restante</th>
+                                                    <th>Total Pagado</th>
                                                     <th>Acciones</th>
+                                                    <th>Restante</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
@@ -161,6 +164,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                            <div class="col-10">
+                                <input class="form-control" id="datePayment" type="date" id="example-date-input">
+                            </div>
+                        </div>
                         <label>Monto</label>
                         <input type = "number" id="amount" class = "form-control" step="0.01">
                         <input type = "hidden" id="idInvoice">
@@ -290,6 +299,5 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
         <script src="js/datatable.js"></script>
         <script src="js/facturas.js"></script>
-
     </body>
 </html>

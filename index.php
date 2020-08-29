@@ -1,4 +1,12 @@
-<?php require ('services/session_check.php');?>
+<?php 
+session_name("TRUCK");
+session_start();
+
+if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+    header("Location: login.php");
+}
+?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,7 +57,5 @@
     <script src="template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="template/js/ruang-admin.min.js"></script>
-    <script src="template/vendor/chart.js/Chart.min.js"></script>
-    <script src="template/js/demo/chart-area-demo.js"></script>
   </body>
 </html>

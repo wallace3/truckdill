@@ -18,30 +18,24 @@ $(document).ready(function(){
         ],
 		setColumns:[
 			{
-				columns:[8],
+                columns:[8],
 				render: function(data, type){
-                    if(data == 1){
-                        return '<span class="badge badge-primary">Pendiente</span>';
-                    }else if(data == 2){
-                        return '<span class="badge badge-success">Completada</span>';
+                    if(data == 'Pendiente'){
+                        return '<span class="badge badge-primary">'+data+'</span>';
+                    }else if(data == 'Completada'){
+                        return '<span class="badge badge-success">'+data+'</span>';
                     }else{
-                        return '<span class="badge badge-danger">Cancelada</span>';
+                        return '<span class="badge badge-danger">'+data+'</span>';
                     }
                 }
 			},
-			{
-				columns: [9],
-                render: function(data,type,row){
-                    return row[6] - data;
-                }
-            },
             {
 				columns: [10],
                 render: function(data, type, row){
                     console.log(row);
-                    if(row[8] == 2){
+                    if(row[13] == 2){
                         return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
-                    }else if(row[7] == 0){
+                    }else if(row[13] == 0){
                         return "<a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
                     }else{
                         return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
@@ -49,84 +43,18 @@ $(document).ready(function(){
                 }
             },
             {
-                columns: [1, 2, 3, 4, 5, 6, 7],
+                columns: [11],
+                data: [9],
+                render: function(data,type,row){
+                    return row[6] - data;
+                }
+            },
+            {
+                columns: [1, 2, 3, 4, 5, 6, 7, 8],
                 inputSearch: true
             }
 		]
 	});
-
-
-
-
-    /*$('#invoices-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "services/getAllInvoices",
-            columns:[
-                {
-                    targets: 0,
-                    data: 0
-                },
-                {
-                    targets: 1,
-                    data: 1
-                },
-                {
-                    targets: 2,
-                    data: 2
-                },
-                {
-                    targets: 3,
-                    data: 3
-                },
-                {
-                    targets: 4,
-                    data: 4
-                },
-                {
-                    targets: 5,
-                    data:5
-                },
-                {
-                    targets: 6,
-                    data:6
-                },
-                {
-                    targets: 7,
-                    data: 7,
-                    render: function(data, type){
-                        if(data == 1){
-                            return '<span class="badge badge-primary">Pendiente</span>';
-                        }else if(data == 2){
-                            return '<span class="badge badge-success">Completada</span>';
-                        }else{
-                            return '<span class="badge badge-danger">Cancelada</span>';
-                        }
-                    }
-                },
-                {
-                    targets: 8,
-                    data:8,
-                    render: function(data,type,row){
-                        return row[5] - data;
-                    }
-                },
-                {
-                    targets: 9,
-                    data:9,
-                    render: function(data, type, row){
-                        console.log(row);
-                        if(row[7] == 2){
-                            return "<span onclick='getPayments("+row[10]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[11]+"'><i class='fas fa-download'></i></a>";
-                        }else if(row[7] == 0){
-                            return "<a href = '"+row[11]+"'><i class='fas fa-download'></i></a>";
-                        }else{
-                            return "<span onclick='getPayments("+row[10]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[10]+"&quot;,&quot;"+row[9]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[11]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[10]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
-                        }
-                    }
-                }
-            ]
-    })*/
 })
 
 function getPayments(id)
@@ -172,7 +100,8 @@ function addPayment()
         data:{
             "id":$('#idInvoice').val(),
             "amount":$('#amount').val(),
-            "idSup":$('#idSup').val()
+            "idSup":$('#idSup').val(),
+            "date":$('#datePayment').val()
         },
         success:function(response){
             console.log(response.data.data);

@@ -67,11 +67,18 @@
           </div>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="programacion">
+            <i class="far fa-calendar-alt"></i>
+            <span>Programación de Pagos</span>
+          </a>
+        </li> 
+        <li class="nav-item">
           <a class="nav-link" href="servicios">
             <i class="fas fa-list"></i>
             <span>Servicios de Proveedores</span>
           </a>
-        </li> ';
+        </li> 
+        ';
 
         }
       ?>
@@ -98,7 +105,14 @@
             <i class="far fa-file"></i>
             <span>Mis Facturas</span>
           </a>
-        </li>';
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="schedules">
+            <i class="far fa-calendar-alt"></i>
+            <span>Pagos Programados</span>
+          </a>
+        </li>
+        ';
 
         }
       

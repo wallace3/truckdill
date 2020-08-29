@@ -2,7 +2,7 @@
 
 session_name ("TRUCK");
 session_start();
-
+$idsup = $_SESSION['idSup'];
 
 /*
  * DataTables example server-side processing script.
@@ -23,30 +23,20 @@ session_start();
  */
 
 // DB table to use
-$table = 'invoices';
+$table = 'payments_schedule';
 
 // Table's primary key
-$primaryKey = 'ID_Supplier';
+$primaryKey = 'ID_Schedule';
 
 // Array of database columns which should be read and sent back to DataTables.
 // The `db` parameter represents the column name in the database, while the `dt`
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 $columns = array(
-    array( 'db' => '`x`.`Supplier`', 'dt' => 0, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Supplier`', 'dt' => 1, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
-    array( 'db' => '`x`.`Company`',  'dt' => 3, 'field' => 'Company'),
-    array( 'db' => '`x`.`Rfc`', 'dt' => 4, 'field' => 'Rfc' ),
-	array( 'db' => '`x`.`Date_Upload`',   'dt' => 5, 'field' => 'Date_Upload' ),
-    array( 'db' => '`x`.`Amount`',  'dt' => 6, 'field' => 'Amount' ),
-    array( 'db' => '`x`.`Date`',  'dt' => 7, 'field' => 'Date' ),
-    array( 'db' => '`x`.`statusText`',  'dt' => 8, 'field' => 'statusText'),
-    array( 'db' => '`x`.`restante`',  'dt' => 9, 'field' => 'restante'),
-    array( 'db' => '`x`.`ID_Supplier`',  'dt' => 10, 'field' => 'ID_Supplier'),
-    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 11, 'field' => 'ID_Invoice'),
-    array( 'db' => '`x`.`Url`',  'dt' => 12, 'field' => 'Url'),
-    array( 'db' => '`x`.`Status`',  'dt' => 13, 'field' => 'Status')
+    array( 'db' => '`x`.`ID_Schedule`', 'dt' => 0, 'field' => 'ID_Schedule' ),
+    array( 'db' => '`x`.`Description`',  'dt' => 1, 'field' => 'Description'),
+    array( 'db' => '`x`.`Amount`',  'dt' => 2, 'field' => 'Amount'),
+    array( 'db' => '`x`.`Date`', 'dt' => 3, 'field' => 'Date' )
 );
 
 // SQL server connection information
@@ -79,22 +69,16 @@ require('ssp.customized.class.php' );
 
 $joinQuery = "FROM (
                 SELECT 
-                    i.Description, 
-                    i.Url, i.Company, 
-                    i.Date_Upload, 
-                    i.Status, 
-                    i.ID_Supplier, 
-                    i.ID_Invoice, 
-                    i.Amount, 
-                    i.Date, 
-                    s.Supplier, 
-                    s.Rfc, 
-                    COALESCE(ROUND(SUM(ps.Amount),2), 0) restante,
-                    IF(i.Status = 0, 'Cancelada', IF(i.Status = 2, 'Completada', 'Pendiente')) statusText
-                FROM invoices i
-                JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
-                LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice
-                GROUP BY i.ID_Invoice) x";
+                    sp.ID_Schedule, 
+                    sp.ID_Invoice, 
+                    sp.Amount,
+                    sp.Date,
+                    inv.Description
+                FROM payments_schedule sp
+                JOIN invoices inv ON inv.ID_Invoice = sp.ID_Invoice
+                JOIN suppliers sup ON inv.ID_Supplier = sup.ID_Supplier
+                WHERE sup.ID_Supplier = ".$idsup."
+                ) x";
 $extraWhere = "";
 $groupBy = "";
 $having = "";

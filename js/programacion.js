@@ -82,7 +82,7 @@ function getInvoices(){
             if(response.data.status == 200){
                 let select = '<option>--Selecciona--</option>';
                 for (var i = 0; i < response.data.data.length; i++) {
-                    select += '<option  value="' + response.data.data[i].ID_Invoice + '">' + response.data.data[i].Description + '</option>';
+                    select += '<option  value="' + response.data.data[i].ID_Invoice + '">' + response.data.data[i].Description + ' $ ' + response.data.data[i].Amount + '</option>';
                 }
                 $(".invoices").html(select);
                 $('#buttonP').prop('disabled',false);

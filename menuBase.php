@@ -78,6 +78,12 @@
             <span>Servicios de Proveedores</span>
           </a>
         </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="complementos-pago">
+            <i class="fas fa-money-check"></i>
+            <span>Complementos de Pago</span>
+          </a>
+        </li> 
         ';
 
         }
@@ -110,6 +116,12 @@
           <a class="nav-link" href="schedules">
             <i class="far fa-calendar-alt"></i>
             <span>Pagos Programados</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="complemento-proveedor">
+            <i class="fas fa-money-check"></i>
+            <span>Complemento de Pago</span>
           </a>
         </li>
         ';

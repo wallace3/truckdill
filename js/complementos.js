@@ -33,12 +33,10 @@ $(document).ready(function(){
 				columns: [10],
                 render: function(data, type, row){
                     console.log(row);
-                    if(row[13] == 2){
+                    if(row[12] != null && row[12] != ''){
                         return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
-                    }else if(row[13] == 0){
-                        return "<a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
                     }else{
-                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span>";
                     }
                 }
             },

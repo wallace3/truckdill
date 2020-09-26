@@ -1,5 +1,15 @@
 <?php
 
+
+    // Include Composer autoloader if not already done.
+    include '../vendor/autoload.php';
+
+    $parser = new \Smalot\PdfParser\Parser();
+    
+    // Parse pdf file and build necessary objects.
+    
+
+
     session_name ("TRUCK");
     session_start();
     date_default_timezone_set("America/Mexico_City");
@@ -26,22 +36,34 @@
     {
         move_uploaded_file($_FILES['file']['tmp_name'], 'docs/'.$folder.'/' . $_FILES['file']['name']);
         
+        
+        $pdflink = $actual_link.'/services/docs/'.$folder.'/'.$_FILES['file']['name'];
+
+        $pdf    = $parser->parseFile($pdflink);
+        
+        $text = $pdf->getText();
+
+        $details  = $pdf->getDetails();
+ 
+        $newDate = date("Y-m-d H:i:s", strtotime($details['CreationDate']));
+
         $json = [
             "ID_Supplier" => $user,
-            "Date" => $current = date("Y-m-d H:i:s"),
+            "Date" => $newDate,
             "Url" => $actual_link.'/services/docs/'.$folder.'/'.$_FILES['file']['name']
         ];
+
 
 	    $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => $actualink."/truckdmback/Documents/".$action,  
+            CURLOPT_URL => $actual_link."/truckdmback/Documents/add",  
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => $method,    							
+            CURLOPT_CUSTOMREQUEST => "POST",    							
             CURLOPT_POSTFIELDS => json_encode($json),                       
             CURLOPT_HTTPHEADER => [
                 "Content-Type: application/json",

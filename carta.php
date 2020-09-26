@@ -64,7 +64,7 @@
                                         <table class="table align-items-center table-flush" id="doc-table">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th>Fecha Última Actualización</th>
+                                                    <th>Fecha Último Documento</th>
                                                     <th>Url</th>
                                                     <th>Días Restantes</th>
                                                     <th>Estatus</th>

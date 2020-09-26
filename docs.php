@@ -49,8 +49,6 @@
                                                     <th>Proveedor</th>
                                                     <th>Fecha Última Actualización</th>
                                                     <th>Url</th>
-                                                    <th>Días Restantes</th>
-                                                    <th>Estatus</th>
                                                     <th>Descargar</th>
                                                 </tr>
                                             </thead>

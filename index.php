@@ -6,7 +6,6 @@ if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
     header("Location: login.php");
 }
 ?>
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

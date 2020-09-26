@@ -44,13 +44,21 @@ $columns = array(
 
 // SQL server connection information
 //require('config.php');
-$sql_details = array(
-    'user' => 'root',
-    'pass' => '',
-    'db'   => 'truckdm',
-    'host' => 'localhost'
-);
-
+if($_SERVER['HTTP_HOST'] == 'localhost'){
+    $sql_details = array(
+        'user' => 'root',
+        'pass' => '',
+        'db'   => 'truckdm',
+        'host' => 'localhost'
+    );
+}else{
+    $sql_details = array(
+        'user' => 'dbu138194',
+        'pass' => 'f!Y#rm)xo+7=*',
+        'db'   => 'dbs519076',
+        'host' => 'db5000540604.hosting-data.io'
+    );
+}
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.

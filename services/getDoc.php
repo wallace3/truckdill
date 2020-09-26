@@ -51,6 +51,8 @@ if($responseJson->status == 200){
             $dias = 17 - date_format(new DateTime($newDateDoc),"d");
         }
     }
+}else{
+    $dias  = 0;
 }
 
 /*

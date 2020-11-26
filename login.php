@@ -9,7 +9,7 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="template/img/logo/logo.png" rel="icon" />
+    <link href="template/img/icon.png" rel="icon" />
     <title>TruckDill </title>
     <link
       href="template/vendor/fontawesome-free/css/all.min.css"
@@ -32,15 +32,19 @@
           <!--Contenido-->
           <div class="container-login">
             <div class="row justify-content-center">
-              <div class="col-xl-10 col-lg-12 col-md-9">
+              <div class="col-xl-6 col-lg-12 col-md-9">
                 <div class="card shadow-sm my-5">
                   <div class="card-body p-0">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="login-form">
+                          <div class = "form-group" style="text-align:center;">    
+                              <img src = "template/img/logotdm.png">
+                          </div>
                           <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Inicio Sesión</h1>
                           </div>
+                         
                             <div class="form-group">
                               <input type="email" class="form-control" id="user" aria-describedby="emailHelp"
                                 placeholder="Correo Electrónico o Usuario">
@@ -49,11 +53,11 @@
                               <input type="password" class="form-control" id="password" placeholder="Contraseña">
                             </div>
                             <div class="form-group">
-                              <button type="button" id="login" class="btn btn-primary btn-block">Ingresar</button>
+                              <button type="button" id="login" class="btn btn-block" style="background-color:#00722e;color:white;">Ingresar</button>
                             </div>
                             <hr>
                             <div class = "form-group">
-                              <span style="color:blue;text-decoration:underline;cursor:pointer;" onclick="changediv();">¿Olvidaste tu Contraseña?</span></a>
+                              <span style="color:black;text-decoration:underline;cursor:pointer;" onclick="changediv();">¿Olvidaste tu Contraseña?</span></a>
                             </div>
                         </div>
                       </div>

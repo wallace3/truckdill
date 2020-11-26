@@ -1,4 +1,10 @@
-<?php require ('services/session_check.php');?>
+<?php 
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,7 +16,7 @@
         />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link href="template/img/logo/logo.png" rel="icon" />
+        <link href="template/img/icon.png" rel="icon" />
         <title>TruckDill </title>
         <link
             href="template/vendor/fontawesome-free/css/all.min.css"

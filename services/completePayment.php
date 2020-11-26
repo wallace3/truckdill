@@ -4,28 +4,24 @@
     session_start();
     date_default_timezone_set("America/Mexico_City");
     $current = date("H:i:s");
-	$date = $_POST['Date'].' '.$current;
-	$invoices = implode(', ', $_POST['ID_Invoice']); 
+    
     
 	$actual_link = 'http://'.$_SERVER['HTTP_HOST'];
 
 	$json = [
-        "ID_Invoice"=>$invoices,
-        "Amount"=>$_POST['Amount'],
-		"Date"=>$date,
-		"ID_Supplier"=>$_POST['ID_Supplier']
+        "ID_Invoice"=>$_POST['ID_Invoice']
 	];
 
 	$curl = curl_init();
 
 	curl_setopt_array($curl, [
-		CURLOPT_URL =>  $actual_link."/truckdmback/Payments/createSchedule",  
+		CURLOPT_URL =>  $actual_link."/truckdmback/Payments/completePayment",  
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => "",
 		CURLOPT_MAXREDIRS => 10,
 		CURLOPT_TIMEOUT => 30,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		CURLOPT_CUSTOMREQUEST => "POST",    							
+		CURLOPT_CUSTOMREQUEST => "PUT",    							
 		CURLOPT_POSTFIELDS => json_encode($json),                       
 		CURLOPT_HTTPHEADER => [
 			"Content-Type: application/json",

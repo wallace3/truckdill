@@ -35,9 +35,10 @@ $primaryKey = 'ID_Schedule';
 $columns = array(
     array( 'db' => '`x`.`ID_Schedule`', 'dt' => 0, 'field' => 'ID_Schedule' ),
     array( 'db' => '`x`.`Supplier`', 'dt' => 1, 'field' => 'Supplier' ),
-    array( 'db' => '`x`.`Description`',  'dt' => 2, 'field' => 'Description'),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 2, 'field' => 'ID_Invoice'),
     array( 'db' => '`x`.`Amount`',  'dt' => 3, 'field' => 'Amount'),
-    array( 'db' => '`x`.`Date`', 'dt' => 4, 'field' => 'Date' )
+    array( 'db' => '`x`.`Date`', 'dt' => 4, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`', 'dt' => 5, 'field' => 'Status' )
 );
 
 // SQL server connection information
@@ -74,12 +75,10 @@ $joinQuery = "FROM (
                     sp.ID_Invoice, 
                     sp.Amount,
                     sp.Date,
-                    inv.Description,
-                    sup.Supplier
+                    sup.Supplier,
+                    sp.Status
                 FROM payments_schedule sp
-                JOIN invoices inv ON inv.ID_Invoice = sp.ID_Invoice
-                JOIN suppliers sup ON inv.ID_Supplier = sup.ID_Supplier
-                WHERE inv.Status = 1
+                JOIN suppliers sup ON sp.ID_Supplier = sup.ID_Supplier
                 ) x";
 $extraWhere = "";
 $groupBy = "";

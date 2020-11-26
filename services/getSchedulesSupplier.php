@@ -34,9 +34,10 @@ $primaryKey = 'ID_Schedule';
 // indexes
 $columns = array(
     array( 'db' => '`x`.`ID_Schedule`', 'dt' => 0, 'field' => 'ID_Schedule' ),
-    array( 'db' => '`x`.`Description`',  'dt' => 1, 'field' => 'Description'),
+    array( 'db' => '`x`.`ID_Invoice`',  'dt' => 1, 'field' => 'ID_Invoice'),
     array( 'db' => '`x`.`Amount`',  'dt' => 2, 'field' => 'Amount'),
-    array( 'db' => '`x`.`Date`', 'dt' => 3, 'field' => 'Date' )
+    array( 'db' => '`x`.`Date`', 'dt' => 3, 'field' => 'Date' ),
+    array( 'db' => '`x`.`Status`', 'dt' => 4, 'field' => 'Status' ),
 );
 
 // SQL server connection information
@@ -73,10 +74,9 @@ $joinQuery = "FROM (
                     sp.ID_Invoice, 
                     sp.Amount,
                     sp.Date,
-                    inv.Description
+                    sp.Status
                 FROM payments_schedule sp
-                JOIN invoices inv ON inv.ID_Invoice = sp.ID_Invoice
-                JOIN suppliers sup ON inv.ID_Supplier = sup.ID_Supplier
+                JOIN suppliers sup ON sp.ID_Supplier = sup.ID_Supplier
                 WHERE sup.ID_Supplier = ".$idsup."
                 ) x";
 $extraWhere = "";

@@ -1,11 +1,21 @@
 $(document).ready(function(){
+    
+    $('.js-example-basic-multiple').select2({
+        placeholder: "SELECCIONA FACTURAS",
+        allowClear: true
+    });
+
     $('#programacion').ocDrawTable({
         ajax: 'services/getSchedules',
 		setColumns:[
             {
                 columns: [5],
                 render: function(data, type, row){
-                    return "<span onclick='updateModal(&quot;"+row[0]+"&quot;,&quot;"+row[3]+"&quot;,&quot;"+row[4]+"&quot;);'><i class='far fa-edit' style='color:#6777EF'></i></span>";
+                    if(row[5]==0){
+                        return "<span onclick='updateModal(&quot;"+row[0]+"&quot;,&quot;"+row[3]+"&quot;,&quot;"+row[4]+"&quot;);'><i class='far fa-edit' style='color:#6777EF'></i></span><span onclick='complete("+row[0]+");'><i class='fa fa-check' style='color:#66bb6a'></i></span>";
+                    }else{
+                        return "<b>PAGADO</b>";
+                    }
                 }
             },
             {
@@ -82,7 +92,7 @@ function getInvoices(){
             if(response.data.status == 200){
                 let select = '<option>--Selecciona--</option>';
                 for (var i = 0; i < response.data.data.length; i++) {
-                    select += '<option  value="' + response.data.data[i].ID_Invoice + '">' + response.data.data[i].Description + ' $ ' + response.data.data[i].Amount + '</option>';
+                    select += '<option  value="' + response.data.data[i].Description + '">' + response.data.data[i].Description + ' $ ' + response.data.data[i].Amount + '</option>';
                 }
                 $(".invoices").html(select);
                 $('#buttonP').prop('disabled',false);
@@ -105,7 +115,30 @@ function createPayment()
         data:{
             "ID_Invoice":$('#invoice').val(),
             "Amount":$('#Amount').val(),
-            "Date":$('#Date').val()
+            "Date":$('#Date').val(),
+            "ID_Supplier":$('#supplier').val()
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#paymentModal').modal("hide");
+                $('#successModal').modal('show');
+                $("#programacion").DataTable().ajax.reload(null, false);
+            }else{
+                $('#errorModal').modal('show');
+            }
+            console.log(response);
+        }
+    })
+}
+
+function complete(id)
+{
+    $.ajax({
+        method:"POST",
+        url:"services/completePayment",
+        dataType:"json",
+        data:{
+            "ID_Invoice":id
         },
         success:function(response){
             if(response.status == 200){

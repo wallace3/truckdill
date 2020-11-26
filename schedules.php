@@ -54,17 +54,19 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Descripción</th>
+                                                    <th>Factura(s)</th>
                                                     <th>Monto Programado</th>
                                                     <th>Fecha Programada</th>
+                                                    <th>Estatus</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Descripción</th>
+                                                    <th>Factura(s)</th>
                                                     <th>Monto Programado</th>
                                                     <th>Fecha Programada</th>
+                                                    <th>Estatus</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>

@@ -31,6 +31,7 @@
         <link href="template/css/ruang-admin.min.css" rel="stylesheet" />
         <link href="template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     </head>
 
@@ -58,7 +59,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Proveedor</th>
-                                                    <th>Descripción</th>
+                                                    <th>Factura(s)</th>
                                                     <th>Monto Programado</th>
                                                     <th>Fecha Programada</th>
                                                     <th>Acciones</th>
@@ -68,7 +69,7 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Proveedor</th>
-                                                    <th>Descripción</th>
+                                                    <th>Factura(s)</th>
                                                     <th>Monto Programado</th>
                                                     <th>Fecha Programada</th>
                                                     <th>Acciones</th>
@@ -177,7 +178,7 @@
                         </div>
                         <div class = "form-group row">
                             <label>Factura</label>
-                            <select class="form-control mb-3 invoices" id="invoice" required name="invoice">
+                            <select class="js-example-basic-multiple form-control invoices" id="invoice" name = "invoice" multiple="multiple">
                             </select>
                         </div>
                         <div class = "form-group row">
@@ -218,6 +219,7 @@
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <script src="js/datatable.js"></script>
         <script src="js/programacion.js"></script>
     </body>

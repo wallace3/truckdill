@@ -39,11 +39,13 @@
                       <div class="col-lg-12">
                         <div class="login-form">
                           <div class = "form-group" style="text-align:center;">    
-                              <img src = "template/img/logotdm.png">
+                              <img src = "template/img/logotdm.png" style="width:100%">
                           </div>
-                          <div class="text-center">
+                          
+                          <div class="text-center" style="padding-top:30px;">
                             <h1 class="h4 text-gray-900 mb-4">Inicio Sesión</h1>
                           </div>
+                          
                          
                             <div class="form-group">
                               <input type="email" class="form-control" id="user" aria-describedby="emailHelp"

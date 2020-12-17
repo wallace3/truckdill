@@ -9,7 +9,7 @@
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-    CURLOPT_URL => $actual_link."/truckdmback/User/block",  
+    CURLOPT_URL => $actual_link."/truckdmback/User/delete",  
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

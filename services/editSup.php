@@ -1,15 +1,27 @@
 <?php
 
-    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+    session_name('TRUCK');
+    session_start();
+    if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
+        header("Location: login.php");
+    }
+ 
 
+    $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
+    
     $json = [
-        "id" => $_POST['id']
+        "id" => $_POST['idSup'],
+        "params" => [
+            "Supplier" => $_POST['sup'],
+            "Rfc" => $_POST['rfc'],
+            "Legal" => $_POST['legal']
+        ]
     ];
 
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-    CURLOPT_URL => $actual_link."/truckdmback/User/block",  
+    CURLOPT_URL => $actual_link."/truckdmback/Supplier/update",  
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

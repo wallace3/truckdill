@@ -73,6 +73,7 @@ $joinQuery = "FROM(
     JOIN `users` AS `us` ON (`us`.`ID_User` = `sup`.`ID_User`) 
     LEFT JOIN `suppliers_has_services` AS `sups` ON (`sups`.`ID_Supplier` = `sup`.`ID_Supplier`) 
     LEFT JOIN `services` AS `serv` ON (`serv`.`ID_Service` = `sups`.`ID_Service`) 
+    WHERE `us`.`Status` != 3
     GROUP BY sup.ID_Supplier
 ) x";
 $extraWhere = "";

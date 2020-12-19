@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     $('#invoices-table').ocDrawTable({
         ajax: 'services/getAllInvoices',
-        dom: 'lfBrtip',
         buttons: [
             {
                 extend: 'csv',
@@ -34,11 +33,11 @@ $(document).ready(function(){
                 render: function(data, type, row){
                     console.log(row);
                     if(row[13] == 2){
-                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
+                        return "<span style='margin-right:5px;' onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
                     }else if(row[13] == 0){
-                        return "<a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
+                        return "<a style='margin-right:5px;' href = '"+row[12]+"'><i class='fas fa-download'></i></a><span onclick='deleteInvoice("+row[11]+");'><i class='fas fa-trash' style='color:#fc544b;'></i></span>";
                     }else{
-                        return "<span onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
+                        return "<span style='margin-right:5px' onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span style='margin-right:5px' onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
                     }
                 }
             },
@@ -139,7 +138,25 @@ function cancelInvoice(id){
                 $('#cancelerrorModal').modal('show');
             }
         }
+    })
+}
 
+function deleteInvoice(id){
+    $.ajax({
+        method:"POST",
+        url:"services/deleteInvoice",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#deleteModal').modal('show');
+                $("#invoices-table").DataTable().ajax.reload(null, false);
+            }else{
+                $('#deleteError').modal('show');
+            }
+        }
     })
 }
 

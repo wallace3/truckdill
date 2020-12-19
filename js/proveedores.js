@@ -18,12 +18,12 @@ $(document).ready(function(){
                 }
 			},
 			{
-				columns: [6],
+                columns: [6],
 				render: function(data, type, row){
                     if(row[5]==1){
-                        return '<span onclick="blockUser('+row[6]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="addServiceModal('+row[7]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span>';
+                        return '<span style ="margin-right:5px;" onclick="blockUser('+row[6]+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span style ="margin-right:5px;" onclick="addServiceModal('+row[7]+');"><i class="fas fa-plus-square" style="color:#6777EF;"></i></span></span><span style="margin-right:5px" onclick="editModal('+row[7]+');"><i class="fas fa-edit" style="color:#6777EF;"></i></span><span onclick="deleteSup('+row[6]+');"><i class="fas fa-trash" style="color:#fc544b;"></i></span>';
                     }else{
-                        return '<span onclick="activeUser('+row[6]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
+                        return '<span onclick="activeUser('+row[6]+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span><span onclick="deleteSup('+row[6]+');"><i class="fas fa-trash" style="color:#fc544b;"></i></span>';
                     }
                 }
 			},
@@ -204,6 +204,67 @@ function addServices(){
                 $('#serviceModal').modal('hide');
                 $("#dataTable").DataTable().ajax.reload(null, false);
             }
+        }
+    })
+}
+
+function editModal(id){
+    $.ajax({
+        method:"POST",
+        url:"services/getInfoSupplier",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            console.log(response);
+            $('#sup').val(response.data.data[0].Supplier);
+            $('#rfc').val(response.data.data[0].Rfc);
+            $('#legal').val(response.data.data[0].Legal);
+            $('#idsup').val(response.data.data[0].ID_Supplier);
+            $('#editModal').modal('show');
+        }
+    })   
+}
+
+function editSup(){
+    $.ajax({
+        method:"POST",
+        url:"services/editSup",
+        dataType:"json",
+        data:{
+            "idSup": $('#idsup').val(),
+            "sup" : $('#sup').val(),
+            "legal": $('#legal').val(),
+            "rfc": $('#rfc').val()
+        },
+        success:function(response){
+            $('#editModal').modal('hide');
+            if(response.status == 200){
+                $("#dataTable").DataTable().ajax.reload(null, false);
+                $('#exitoModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+        }
+    })
+}
+
+function deleteSup(id){
+    $.ajax({
+        method:"POST",
+        url:"services/deleteUser",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#deleteModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+            $("#dataTable").DataTable().ajax.reload(null, false);
         }
     })
 }

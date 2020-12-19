@@ -94,6 +94,7 @@ $joinQuery = "FROM (
                 FROM invoices i
                 JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
                 LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice
+                WHERE i.status != 3
                 GROUP BY i.ID_Invoice) x";
 $extraWhere = "";
 $groupBy = "";

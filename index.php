@@ -18,7 +18,7 @@ if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="template/img/icon.png" rel="icon" />
-    <title>TruckDrill </title>
+    <title>TDM GROUP </title>
     <link
       href="template/vendor/fontawesome-free/css/all.min.css"
       rel="stylesheet"

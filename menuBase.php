@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon">
           <img src="">
         </div>
-        <div class="sidebar-brand-text mx-3">TDM GROUP</div>
+        <div class="sidebar-brand-text mx-3"><img src = "template/img/logotdm.png" style="width:100%"></div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">

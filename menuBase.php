@@ -84,6 +84,12 @@
             <span>Complementos de Pago</span>
           </a>
         </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="evaluaciones">
+            <i class="fas fa-pencil-ruler"></i>
+            <span>Evaluaciones</span>
+          </a>
+        </li> 
         ';
 
         }

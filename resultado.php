@@ -134,173 +134,173 @@
                                     <div class="form-group preguntas">
                                         <label>¿Cómo se genera la presión hidráulica?</label>
                                         <input type="hidden" class="idPregunta" value="3">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[2]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es el principio de la presión?</label>
                                         <input type="hidden" class="idPregunta" value="4">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[3]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de aceite utilizan los motores diésel?</label>
                                         <input type="hidden" class="idPregunta" value="5">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[4]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de aceite utiliza el sistema hidráulico del jumbo?</label>
                                         <input type="hidden" class="idPregunta" value="6">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[5]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de aceite lleva una transmisión de un scoop?</label>
                                         <input type="hidden" class="idPregunta" value="7">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[6]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de aceite llevan los planetarios?</label>
                                         <input type="hidden" class="idPregunta" value="8">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[7]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de aceite debe llevar los diferenciales?</label>
                                         <input type="hidden" class="idPregunta" value="9">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[8]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Qué tipo de grasa se utiliza en la lubricación de los equipos?</label>
                                         <input type="hidden" class="idPregunta" value="10">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[9]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿A qué presiones de calibración dejaría Ud. las válvulas de control de los siguientes sistemas de un Jumbo Electrohidráulico de 1 brazo marca Sandvik modelo DD-130, Axera 6? Rotación, Avance, Percusión</label>
                                         <input type="hidden" class="idPregunta" value="11">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[10]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>Mencione los diferentes tipos de mantenimiento preventivo que se aplican en un jumbo</label>
                                         <input type="hidden" class="idPregunta" value="12">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[11]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas"> 
                                         <label>Mencione el modelo de perforadora tienen los jumbos: AXERA 5, DD310</label>
                                         <input type="hidden" class="idPregunta" value="13">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[12]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función del acumulador de alta presión y cuál es el diagnostico de falla cuando un acumulador esta descargado?</label>
                                         <input type="hidden" class="idPregunta" value="14">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[13]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es el efecto en una perforadora cuando se percute en vacío o cuando el operador no calibra bien las presiones y hay percusiones en vacío?</label>
                                         <input type="hidden" class="idPregunta" value="15">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[14]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de una válvula de alivio?</label>
                                         <input type="hidden" class="idPregunta" value="16">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[15]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de una válvula de secuencia?</label>
                                         <input type="hidden" class="idPregunta" value="17">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[16]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de una válvula reductora de presión?</label>
                                         <input type="hidden" class="idPregunta" value="18">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[17]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de una válvula de choque o sobrecarga?</label>
                                         <input type="hidden" class="idPregunta" value="19">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[18]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de una válvula direccional?</label>
                                         <input type="hidden" class="idPregunta" value="20">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[19]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>Mencione 5 tipos de accionamiento de una válvula direccional</label>
                                         <input type="hidden" class="idPregunta" value="21">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[20]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la presión máxima en el sistema de rotación?</label>
                                         <input type="hidden" class="idPregunta" value="22">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[21]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de las válvulas 6 y 7?</label>
                                         <input type="hidden" class="idPregunta" value="23">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[22]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de la válvula 43?</label>
                                         <input type="hidden" class="idPregunta" value="24">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[23]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de las válvulas 4 y 5?</label>
                                         <input type="hidden" class="idPregunta" value="25">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[24]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de las válvulas 20 y 59?</label>
                                         <input type="hidden" class="idPregunta" value="26">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[25]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de la válvula 34 y a qué presión se calibra?</label>
                                         <input type="hidden" class="idPregunta" value="27">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[26]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>¿Cuál es la función de la válvula 3 y el compensador 2?</label>
                                         <input type="hidden" class="idPregunta" value="28">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[27]['respuesta']; ?></textarea>
                                     </div>
                                         <div class="form-group preguntas">
                                         <label>¿Cuál es la diferencia de presión entre avance y percusión de barrenacion normalmente?</label>
                                         <input type="hidden" class="idPregunta" value="29">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[28]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>De la siguiente imagen identifique cada una de las partes que se indican</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/1.png">
                                         <input type="hidden" class="idPregunta" value="30">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[29]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>De la siguiente imagen identifique cada uno de los simbolos y escribalos en el campo de texto.</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/imagen2.png">
                                         <input type="hidden" class="idPregunta" value="31">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[30]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>De las siguiente imagen identifique cada uno de los componentes marcados y escribalos con su numero en el cuadro de texto</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/imagen3.png">
                                         <input type="hidden" class="idPregunta" value="32">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[31]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>De las siguiente imagen identifique cada uno de los componentes marcados y escribalos con su numero en el cuadro de texto</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/imagen4.png">
                                         <input type="hidden" class="idPregunta" value="33">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[32]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>Lea el siguiente diagrama</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/imagen5.png">
                                         <input type="hidden" class="idPregunta" value="34">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[33]['respuesta']; ?></textarea>
                                     </div>
                                     <div class="form-group preguntas">
                                         <label>Lea el siguiente diagrama</label><br>
                                         <img src="http://evaluacion.truckdm.com.mx/img/imagen6.png">
                                         <input type="hidden" class="idPregunta" value="35">
-                                        <textarea class="form-control respuesta" rows="5" disabled></textarea>
+                                        <textarea class="form-control respuesta" rows="5" disabled><?php echo $events[34]['respuesta']; ?></textarea>
                                     </div>
                                 </div>
                             </div>

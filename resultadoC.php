@@ -2,12 +2,12 @@
 
     require_once('services/db.php');
 
-    $sql = "SELECT pr.Pregunta, re.respuesta, pr.Url, re.Calificacion, re.idRespuesta FROM respuestas as re JOIN preguntas pr ON re.idPregunta = pr.idPregunta WHERE re.idEmpleado = ".$_GET['id'];
+    $sql = "SELECT pr.Pregunta, re.respuesta, pr.Url, re.Calificacion, re.idRespuesta FROM respuestas_candidato as re JOIN preguntas pr ON re.idPregunta = pr.idPregunta WHERE re.idEmpleado = ".$_GET['id'];
     $req = $bdd->prepare($sql);
     $req->execute();
     $events = $req->fetchAll();
 
-    $sql_em = "SELECT * FROM empleado  WHERE idEmpleado = ".$_GET['id'];
+    $sql_em = "SELECT * FROM candidatos  WHERE idCandidato = ".$_GET['id'];
     $req_emp = $bdd->prepare($sql_em);
     $req_emp->execute();
     $empleado = $req_emp->fetchAll();
@@ -87,9 +87,6 @@
                     
                     <!-- ABOUT -->
                     <div class="page-section" id="about">
-                        <div style="text-align:center;margin-bottom:10px;">
-                            <label style="font-size:24px;color:#00722e">Llena la información</label>
-                        </div>
                         <div class="row" style="margin-bottom:25px;">
                             <div class ="form-group">
                                 <label for="exampleInputEmail1" class="col-sm-2" >Nombre Completo:</label>
@@ -98,15 +95,27 @@
                                 </div>
                             </div>
                             <div class ="form-group">
-                                <label for="exampleInputEmail1" class="col-sm-2" >Puesto:</label>
+                                <label for="exampleInputEmail1" class="col-sm-2" >Télefono:</label>
                                 <div class = "col-sm-10">
-                                    <input type="text" class="form-control" id="puesto" aria-describedby="emailHelp" value="<?php echo $empleado[0]['Puesto']; ?>" placeholder="Puesto" disabled>
+                                    <input type="text" class="form-control" id="puesto" aria-describedby="emailHelp" value="<?php echo $empleado[0]['Tel']; ?>" placeholder="Puesto" disabled>
                                 </div>
                             </div>
                             <div class ="form-group">
-                                <label for="exampleInputEmail1" class="col-sm-2" >Nivel de Estudios:</label>
+                                <label for="exampleInputEmail1" class="col-sm-2" >Celular:</label>
                                 <div class = "col-sm-10">
-                                    <input type="text" class="form-control" id="nivel" aria-describedby="emailHelp" placeholder="Nivel de estudios" value="<?php echo $empleado[0]['Nivel']; ?>" disabled>
+                                    <input type="text" class="form-control" id="nivel" aria-describedby="emailHelp" placeholder="Nivel de estudios" value="<?php echo $empleado[0]['Cel']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class ="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2" >Ciudad de Origen:</label>
+                                <div class = "col-sm-10">
+                                    <input type="text" class="form-control" id="nivel" aria-describedby="emailHelp" placeholder="Nivel de estudios" value="<?php echo $empleado[0]['Ciudad']; ?>" disabled>
+                                </div>
+                            </div>
+                            <div class ="form-group">
+                                <label for="exampleInputEmail1" class="col-sm-2" >Años Experiencia:</label>
+                                <div class = "col-sm-10">
+                                    <input type="text" class="form-control" id="nivel" aria-describedby="emailHelp" placeholder="Nivel de estudios" value="<?php echo $empleado[0]['Tiempo']; ?>" disabled>
                                 </div>
                             </div>
                             <div class ="form-group">
@@ -122,7 +131,7 @@
                             </div>
                         </div>
                         <div style="text-align:center;margin-bottom:10px;">
-                            <label style="font-size:24px;color:#00722e;">Contesta la siguiente evaluación</label>
+                            <label style="font-size:24px;color:#00722e;">Respuestas evaluación</label>
                         </div>
                         <div class="row">
                             <div class="col-md-12">

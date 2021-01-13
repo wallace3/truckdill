@@ -1,6 +1,6 @@
 <?php
 
-    require_once('sendEmail.php')
+    require_once('sendEmail.php');
 
     $actual_link = 'http://'.$_SERVER['HTTP_HOST'];
 

@@ -85,11 +85,19 @@
           </a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link" href="evaluaciones">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#evaluacionesTab" aria-expanded="true"
+            aria-controls="collapseTable">
             <i class="fas fa-pencil-ruler"></i>
             <span>Evaluaciones</span>
           </a>
-        </li> 
+          <div id = "evaluacionesTab" class = "collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+            <div class = "bg-white py-2 collapse-inner rounded">
+              <h6 class = "collapse-header">Evaluaciones</h6>
+              <a class = "collapse-item" href="evaluaciones">Empleados</a>
+              <a class = "collapse-item" href = "evaluaciones_candidatos">Candidatos</a>
+            </div>
+          </div>
+        </li>
         ';
 
         }

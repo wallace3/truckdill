@@ -50,7 +50,8 @@
                             <th>Ciudad de Origen</th>
                             <th>Proyecto</th>
                             <th>Fecha</th>
-                            <th></th>
+                            <th>Ver</th>
+                            <th>CV</th>
                             </tr>
                         </thead>
                         <tbody id="emp-body">

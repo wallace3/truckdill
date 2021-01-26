@@ -17,7 +17,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <link href="template/img/icon.png" rel="icon" />
-        <title>TruckDill </title>
+        <title>TDM GROUP </title>
         <link
             href="template/vendor/fontawesome-free/css/all.min.css"
             rel="stylesheet"
@@ -28,9 +28,11 @@
             rel="stylesheet"
             type="text/css"
         />
+        
         <link href="template/css/ruang-admin.min.css" rel="stylesheet" />
         <link href="template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <link href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.dataTables.min.css" rel="stylesheet"/>
 
     </head>
 
@@ -50,7 +52,7 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Facturas</h6>
                                     </div>
                                     <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="invoices-table">
+                                        <table class="table align-items-center table-flush display" id="invoices-table">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -75,12 +77,12 @@
                                                     <th>Empresa</th>
                                                     <th>RFC</th>
                                                     <th>Fecha Sistema</th>
-                                                    <th>Monto</th>
+                                                    <th>$<span id="suma" style="font-weight:bold;color:darkblue;"></span></th>
                                                     <th>Fecha</th>
                                                     <th>Estatus</th>
-                                                    <th>Total Pagado</th>
+                                                    <th>$<span id="totalP" style="font-weight:bold;color:green;"></span></th>
                                                     <th>Acciones</th>
-                                                    <th>Restante</th>
+                                                    <th>$<span id="restante" style="font-weight:bold;color:red;"></span></th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
@@ -335,6 +337,7 @@
         <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
         <script src="js/datatable.js"></script>
         <script src="js/facturas.js"></script>
     </body>

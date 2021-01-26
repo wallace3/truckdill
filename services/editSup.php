@@ -14,7 +14,8 @@
         "params" => [
             "Supplier" => $_POST['sup'],
             "Rfc" => $_POST['rfc'],
-            "Legal" => $_POST['legal']
+            "Legal" => $_POST['legal'],
+            "ID_Enterprise" => $_POST['enterprise']
         ]
     ];
 

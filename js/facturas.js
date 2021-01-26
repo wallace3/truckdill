@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     $('#invoices-table').ocDrawTable({
         ajax: 'services/getAllInvoices',
+        
         buttons: [
             {
                 extend: 'csv',
@@ -31,7 +32,6 @@ $(document).ready(function(){
             {
 				columns: [10],
                 render: function(data, type, row){
-                    console.log(row);
                     if(row[13] == 2){
                         return "<span style='margin-right:5px;' onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
                     }else if(row[13] == 0){
@@ -51,9 +51,35 @@ $(document).ready(function(){
             {
                 columns: [1, 2, 3, 4, 5, 6, 7, 8],
                 inputSearch: true
-            }
-		]
+            },
+            
+        ],
+    });
+
+
+
+    $('#invoices-table').on( 'draw.dt', function (e, settings) {
+        console.log(settings);
+        let sum=0;
+        let tot=0;
+        let res=0;
+        $(settings.nTBody).find('tr td:nth-child(7)').each(function(idx, ele) {
+            console.log(ele.textContent);
+            sum+=parseFloat(ele.textContent);
+        })
+        $(settings.nTBody).find('tr td:nth-child(10)').each(function(idx, ele) {
+            console.log(ele.textContent);
+            tot+=parseFloat(ele.textContent);
+        })
+        $(settings.nTBody).find('tr td:nth-child(12)').each(function(idx, ele) {
+            console.log(ele.textContent);
+            res+=parseFloat(ele.textContent);
+        })
+        $('#suma').text(sum.toFixed(2));
+        $('#totalP').text(tot.toFixed(2));
+        $('#restante').text(res.toFixed(2));
 	});
+    
 })
 
 function getPayments(id)

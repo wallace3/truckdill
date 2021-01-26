@@ -227,7 +227,14 @@
                         <input type = "text" id="rfc" class  = "form-control">
                         <label>Rep Legal:</label>
                         <input type = "text" id="legal" class  = "form-control">
+                        <label>Empresa a quien proveen:</label>
+                        <select class = "form-control" id="enterprise">
+                            <option value ="0">-- SELECCIONA --</option>
+                            <option value ="1">SITDM SA DE CV</option>
+                            <option value ="2">TRUCK DRILL MACHINES SA DE CV</option>
+                        </select>
                         <input type = "hidden" id  = "idsup">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" onclick="editSup();">Guardar</button>

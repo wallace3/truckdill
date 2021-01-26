@@ -63,8 +63,6 @@
                                 <div class = "form-group">
                                     <label for = "empresa">Empresa Factura</label>
                                     <select name  = "empresa" class = "form-control" id = "empresa">
-                                        <option value = "empresa1" selected>Empresa 1</option>
-                                        <option value = "empresa2">Empresa 2</option>
                                     </select>
                                 </div>
                                 <div class  = "form-group">

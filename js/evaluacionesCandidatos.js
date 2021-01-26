@@ -17,6 +17,7 @@ $(document).ready(function(){
                   '<td>'+v.Proyecto+'</td>'+
                   '<td>'+v.Fecha+'</td>'+
                   '<td><button onclick="ver(\'' + v.idCandidato + '\')" type="button" class="btn btn-outline-primary btn-icon mr-2"><i class="fa fa-eye"></i></button></td>'+
+                  "<td><a href = '"+v.CV+"'><i class='fas fa-download'></i></a></td>"+
                 '</tr>';
             });
             $('#emp-body').html(datos);

@@ -199,7 +199,6 @@ function addServices(){
             "id":$('#idSupplier').val()
         },
         success:function(response){
-            console.log(response);
             if(response.status == 200){
                 $('#serviceModal').modal('hide');
                 $("#dataTable").DataTable().ajax.reload(null, false);
@@ -217,11 +216,11 @@ function editModal(id){
             "id":id
         },
         success:function(response){
-            console.log(response);
             $('#sup').val(response.data.data[0].Supplier);
             $('#rfc').val(response.data.data[0].Rfc);
             $('#legal').val(response.data.data[0].Legal);
             $('#idsup').val(response.data.data[0].ID_Supplier);
+            $('#enterprise').val(response.data.data[0].ID_Enterprise);
             $('#editModal').modal('show');
         }
     })   
@@ -236,7 +235,8 @@ function editSup(){
             "idSup": $('#idsup').val(),
             "sup" : $('#sup').val(),
             "legal": $('#legal').val(),
-            "rfc": $('#rfc').val()
+            "rfc": $('#rfc').val(),
+            "enterprise":$('#enterprise').val()
         },
         success:function(response){
             $('#editModal').modal('hide');

@@ -24,6 +24,8 @@ $(document).ready(function(){
                         return '<span class="badge badge-primary">'+data+'</span>';
                     }else if(data == 'Completada'){
                         return '<span class="badge badge-success">'+data+'</span>';
+                    }else if(data=='Cancelada Por Proveedor'){
+                        return '<span class="badge badge-warning">'+data+'</span>';
                     }else{
                         return '<span class="badge badge-danger">'+data+'</span>';
                     }
@@ -36,7 +38,10 @@ $(document).ready(function(){
                         return "<span style='margin-right:5px;' onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><a href = '"+row[12]+"'><i class='fas fa-download'></i></a>";
                     }else if(row[13] == 0){
                         return "<a style='margin-right:5px;' href = '"+row[12]+"'><i class='fas fa-download'></i></a><span onclick='deleteInvoice("+row[11]+");'><i class='fas fa-trash' style='color:#fc544b;'></i></span>";
-                    }else{
+                    }else if(row[13] == 4){
+                        return "<span style='margin-right:5px' onclick='getInfoUrl("+row[11]+");'><i class='fas fa-eye' style='color:#6777EF'></i></span>";
+                    }
+                    else{
                         return "<span style='margin-right:5px' onclick='getPayments("+row[11]+");'><i class='fas fa-info-circle' style='color:#6777EF'></i></span><span style='margin-right:5px' onclick='addPaymentModal(&quot;"+row[11]+"&quot;,&quot;"+row[10]+"&quot;);'><i class='fas fa-money-check-alt' style='color:#66bb6a;'></i></span><a href = '"+row[12]+"' target='_blank'><i class='fas fa-download'></i></a><span onclick='cancelInvoice("+row[11]+");'><i class='fas fa-window-close' style='color:#fc544b'></i></span>";
                     }
                 }
@@ -104,6 +109,31 @@ function getPayments(id)
                 });
                 $('#body-payments').html(table);
                 $('#paymentsModal').modal('show');
+            }
+        }
+    })
+}
+
+function getInfoUrl(id){
+    let url="";
+    $.ajax({
+        method:"POST",
+        url:"services/getUrlInfo",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            console.log(response);
+            if(response.data.status==200){
+                $('#buttonUrl').empty();
+                $('#detalleModal').modal('show');
+                $('#fechaCancelacion').text(response.data.data[0].Cancel_Date);
+                $('#urlCancelacion').text(response.data.data[0].Acuse);
+                url = "<a href='"+response.data.data[0].Acuse+"' target='_blank'><button type='button' class='btn btn-primary'>Ver Archivo</button></a>";
+                $('#buttonUrl').append(url)
+            }else{
+                $('#errorsModal').modal('show');
             }
         }
     })

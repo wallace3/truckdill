@@ -90,7 +90,12 @@ $joinQuery = "FROM (
                     s.Supplier, 
                     s.Rfc, 
                     COALESCE(ROUND(SUM(ps.Amount),2), 0) restante,
-                    IF(i.Status = 0, 'Cancelada', IF(i.Status = 2, 'Completada', 'Pendiente')) statusText
+                    CASE 
+                        WHEN i.Status=0 THEN 'Cancelada'
+                        WHEN i.Status=1 THEN 'Pendiente'
+                        WHEN i.Status=2 THEN 'Completada'
+                        ELSE 'Cancelada Por Proveedor'
+                    END AS statusText
                 FROM invoices i
                 JOIN suppliers s ON s.ID_Supplier = i.ID_Supplier
                 LEFT JOIN payments_to_supplier ps ON ps.ID_Invoice = i.ID_Invoice

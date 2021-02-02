@@ -156,6 +156,34 @@
             </div>
         </div>
 
+        <div class="modal" id="detalleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Detalle Cancelación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span>Fecha de Cancelación: <p id="fechaCancelacion"></p></span>
+                            </div>
+                            <div class="col-md-12">
+                                <span>Link de Acuse:</span>
+                            </div>
+                            <div class="col-md-12" id="buttonUrl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal" id="payModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -338,7 +366,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
         <script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
-        <script src="js/datatable.js"></script>
-        <script src="js/facturas.js"></script>
+        <script src="js/datatable.js?v=1.0"></script>
+        <script src="js/facturas.js?v=1.0"></script>
     </body>
 </html>

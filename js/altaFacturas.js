@@ -64,9 +64,9 @@ function getEnterprises(){
         dataType:"json",
         success:function(response){
             if(typeof(response.data.data) == "undefined"){
-                html='<option value = "1" selected>SITDM SA DE CV</option><option value = "2">TRUCK DRILL MACHINES SA DE CV</option>';
+                html='<option value = "SITDM SA DE CV" selected>SITDM SA DE CV</option><option value = "TRUCK DRILL MACHINES SA DE CV">TRUCK DRILL MACHINES SA DE CV</option>';
             }else{
-                html = "<option value="+response.data.data[0].ID_Enterprise+">"+response.data.data[0].Name+"</option>";
+                html = "<option value="+response.data.data[0].Name+">"+response.data.data[0].Name+"</option>";
             }
             $('#empresa').append(html);
         }

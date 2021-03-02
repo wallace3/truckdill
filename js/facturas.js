@@ -17,6 +17,33 @@ $(document).ready(function(){
             }
         ],
 		setColumns:[
+            {
+                columns:[6],
+                render: function(data,type){
+                    number = parseFloat(data);
+                    var float = number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    return "$"+float;
+                    //data.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                }
+            },
+            {
+                columns:[9],
+                render: function(data,type){
+                    number = parseFloat(data);
+                    var float = number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    return "$"+float;
+                    //data.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                }
+            },
+            {
+                columns:[11],
+                render: function(data,type){
+                    number = parseFloat(data);
+                    var float = number.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                    return "$"+float;
+                    //data.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+                }
+            },
 			{
                 columns:[8],
 				render: function(data, type){
@@ -69,20 +96,36 @@ $(document).ready(function(){
         let tot=0;
         let res=0;
         $(settings.nTBody).find('tr td:nth-child(7)').each(function(idx, ele) {
-            console.log(ele.textContent);
-            sum+=parseFloat(ele.textContent);
+            let string = "";
+            string = ele.textContent.replace(",", "");
+            string = string.replace("$","");
+            sum+=parseFloat(string);
         })
         $(settings.nTBody).find('tr td:nth-child(10)').each(function(idx, ele) {
-            console.log(ele.textContent);
-            tot+=parseFloat(ele.textContent);
+            let string = "";
+            string = ele.textContent.replace(",", "");
+            string = string.replace("$","");
+            tot+=parseFloat(string);
         })
         $(settings.nTBody).find('tr td:nth-child(12)').each(function(idx, ele) {
-            console.log(ele.textContent);
-            res+=parseFloat(ele.textContent);
+            let string = "";
+            string = ele.textContent.replace(",", "");
+            string = string.replace("$","");
+            res+=parseFloat(string);
         })
-        $('#suma').text(sum.toFixed(2));
-        $('#totalP').text(tot.toFixed(2));
-        $('#restante').text(res.toFixed(2));
+
+        let suma = sum.toFixed(2);
+        suma = suma.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+        let total = tot.toFixed(2);
+        total = total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+        let restante = res.toFixed(2);
+        restante = restante.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+        $('#suma').text(suma);
+        $('#totalP').text(total);
+        $('#restante').text(restante);
 	});
     
 })

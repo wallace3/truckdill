@@ -98,6 +98,24 @@
             </div>
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="unidad-minera">
+            <i class="fas fa-network-wired"></i>
+            <span>Unidades Mineras</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#requisicionesTab" aria-expanded="true"
+            aria-controls="collapseTable">
+            <i class="fas fa-users"></i>
+            <span>Residentes</span>
+          </a>
+          <div id = "requisicionesTab" class = "collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+            <div class = "bg-white py-2 collapse-inner rounded">
+              <a class = "collapse-item" href="requisiciones">Requisiciones</a>
+            </div>
+          </div>
+        </li>
         ';
 
         }
@@ -111,16 +129,7 @@
               <i class="far fa-file-alt"></i>
               <span>Carta Cumplimiento Fiscal</span>
             </a>
-          </li>';
-        }
-      ?>
-
-        
-      <?php  
-      
-        if($_SESSION['idType']==4){
-
-          echo '<li class="nav-item">
+          </li><li class="nav-item">
           <a class="nav-link" href="facturas_proveedor">
             <i class="far fa-file"></i>
             <span>Mis Facturas</span>
@@ -136,6 +145,27 @@
           <a class="nav-link" href="complemento-proveedor">
             <i class="fas fa-money-check"></i>
             <span>Complemento de Pago</span>
+          </a>
+        </li>'
+          ;
+        }
+      ?>
+
+        
+      <?php  
+      
+        if($_SESSION['idType']==3){
+
+          echo '<li class="nav-item">
+          <a class="nav-link" href="mis_requisiciones">
+            <i class="far fa-file"></i>
+            <span>Mis Requisiciones</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="nueva_requisicion">
+            <i class="far fa-file-word"></i>
+            <span>Nueva Requisición</span>
           </a>
         </li>
         ';

@@ -46,7 +46,7 @@
 			];
 			$curl = curl_init();
 			curl_setopt_array($curl, [
-				CURLOPT_URL => "http://127.0.0.1/truckdmback/Supplier/getSupplierbyId",  
+				CURLOPT_URL => $actual_link."/truckdmback/Supplier/getSupplierbyId",  
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => "",
 				CURLOPT_MAXREDIRS => 10,
@@ -69,9 +69,38 @@
 			$_SESSION['Sup'] = $responseSup->data[0]->Supplier;	
 			$_SESSION['rfc'] = $responseSup->data[0]->Rfc;	
 			$_SESSION['legal'] = $responseSup->data[0]->Legal;	
+		}else if($responseJson->data[0]->ID_Type == 3){
+			$json = [
+				"id" => $responseJson->data[0]->ID_User
+			];
+			$curl = curl_init();
+			curl_setopt_array($curl, [
+				CURLOPT_URL => $actual_link."/truckdmback/Residents/getResident",  
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => "",
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 30,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => "GET",    							
+				CURLOPT_POSTFIELDS => json_encode($json),                       
+				CURLOPT_HTTPHEADER => [
+					"Content-Type: application/json",
+					"cache-control: no-cache"
+				]
+			]);
 
-			
+			$response = curl_exec($curl);
+			$err = curl_error($curl);
+			$responseRe = json_decode($response);
+			curl_close($curl);
+
+			$_SESSION['idResident'] = $responseRe->data[0]->ID_Resident;
+			$_SESSION['name'] = $responseRe->data[0]->Name;	
+			$_SESSION['phone'] = $responseRe->data[0]->Phone;	
+			$_SESSION['iddrill'] = $responseRe->data[0]->ID_Drill;	
 		}
+
+
 		die(json_encode([
 			"status" => 200,
 			"message" => "Sesion Iniciada"

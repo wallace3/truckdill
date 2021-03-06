@@ -46,14 +46,7 @@
                             <div class="col-lg-12">
                                 <div class="card mb-4">
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Proveedores</h6>
-                                    </div>
-                                    <div style="text-align:right;margin-right:20px">
-                                        <a href = "alta_proveedor">
-                                            <button class="btn btn-primary" type="button" id="nuevoProveedor">
-                                                <i class="fas fa-plus"> Nuevo Proveedor</i>
-                                            </button>
-                                        </a>
+                                        <h6 class="m-0 font-weight-bold text-primary">Mis Requisiciones</h6>
                                     </div>
                                     <div class="table-responsive p-3">
                                         <table class="table align-items-center table-flush" id="dataTable">
@@ -93,62 +86,6 @@
             </div>
         </div>
 
-        <div class="modal" id="successModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Éxito</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Se ha activado proveedor exitosamente</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="blockModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Éxito</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Se ha bloqueado a proveedor exitosamente</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Éxito</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Se ha eliminado a proveedor exitosamente</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="modal" id="errorModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -164,80 +101,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="exitoModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Exito</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Se ha actualizo información con éxito</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="serviceModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Servicios a Añadir</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div id = "infoServices">
-                        </div>
-                        <input type = "hidden" id="idSupplier">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="addServices();">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal" id="editModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Editar Proveedor</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <label>Proveedor:</label>
-                        <input type = "text" id="sup" class  = "form-control">
-                        <label>RFC:</label>
-                        <input type = "text" id="rfc" class  = "form-control">
-                        <label>Rep Legal:</label>
-                        <input type = "text" id="legal" class  = "form-control">
-                        <label>Empresa a quien proveen:</label>
-                        <select class = "form-control" id="enterprise">
-                            <option value ="0">-- SELECCIONA --</option>
-                            <option value ="1">SITDM SA DE CV</option>
-                            <option value ="2">TRUCK DRILL MACHINES SA DE CV</option>
-                        </select>
-                        <input type = "hidden" id  = "idsup">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="editSup();">Guardar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>

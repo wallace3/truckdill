@@ -52,7 +52,13 @@
                                         <img src="template/img/logotdm.png" width="200px" height="100px">
                                         <div class="form-group">
                                             <label>Proyecto</label>
-                                            <input type="text" id="proyecto" class="form-control">
+                                            <select class="form-control" id="proyecto">
+                                                <option value="">-- SELECCIONA -- </option>
+                                                <option value="San Martín">San Martín</option>
+                                                <option value="Bolañitos">Bolañitos</option>
+                                                <option value="El Compas">El Compas</option>
+                                                <option value="Guanaceví">Guanaceví</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Equipo</label>
@@ -69,19 +75,17 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Folio No.</label>
-                                            <input type="text" id="folio" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Fecha de Emisión.</label>
-                                            <input type="date" id="fecha_emision" class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Fecha Requerida</label>
-                                            <input type="date" id="fecha_requerida" class="form-control">
+                                            <input type="text" id="folio" class="form-control" disabled>
                                         </div>
                                         <div class="form-group">
                                             <label>Clave Depto. Emisor</label>
-                                            <input type="text" id="depto" class="form-control">
+                                            <select class="form-control" id="depto">
+                                                <option value="">-- SELECCIONA -- </option>
+                                                <option value="001">001 - San Martín</option>
+                                                <option value="002">002 - Bolañitos</option>
+                                                <option value="003">003 - El Compas</option>
+                                                <option value="004">004 - Guanaceví</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>   
@@ -102,7 +106,7 @@
                                             </thead>
                                             <tbody class="materiales">
                                             <tr class="materiales_tr">
-                                                <td><input type="text" class="form-control partida"></td>
+                                                <td><input type="text" class="form-control partida" value="1" disabled></td>
                                                 <td><input type="text" class="form-control marca"></td>
                                                 <td><input type="text" class="form-control modelo"></td>
                                                 <td><textarea class="form-control descripcion" rows="5" ></textarea></td>
@@ -122,12 +126,6 @@
                                         <div class="form-group">
                                             <label>Observaciones</label>
                                             <textarea class="form-control" rows="3" id="observaciones"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Solicitante</label>
-                                            <input type="text" id="solicitante" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -176,31 +174,20 @@
             </div>
         </div>
 
-        <div class="modal" id="cancelModal" tabindex="-1" role="dialog">
+        <div class="modal" id="successModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Cancelación de Factura</h5>
+                        <h5 class="modal-title">Éxito</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <label>Ingresa Acuse de Cancelación</label>
-                        <div class  = "form-group">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" multiple="multiple" id="filePdf" >
-                                    <label class="custom-file-label" for="customFileLangHTML" id="fileName" data-browse="Seleccionar Archivo">Seleccionar Archivo</label>
-                                </div>
-                            </div>
-                            <p>* Ingresa solo archivo PDF</p>
-                        </div>
-                        <input type="hidden" id="idInvoice">
+                        <p>Se agregó requisicon exitosamente.</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="cancelInvoice();">Confirmar Cancelación</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="redirect()">OK</button>
                     </div>
                 </div>
             </div>

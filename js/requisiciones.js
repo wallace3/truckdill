@@ -1,4 +1,5 @@
 var materiales=[];
+var contador=1;
 $(document).ready(function() {
     
     $('#dataTable').ocDrawTable({
@@ -7,7 +8,7 @@ $(document).ready(function() {
 			{
 				columns:[6],
 				render:function(data,type,row){
-                    return "<span onclick='detail(&quot;"+row[0]+"&quot;)'><i class='far fa-eye'></i></span>";
+                    return "<span onclick='detail(&quot;"+row[0]+"&quot;)' style='margin-right:5px'><i class='far fa-eye'></i></span><span onclick='remove(&quot;"+row[0]+"&quot;)'><i class='fas fa-trash' style='color:red'></i></span>";
                 }
 			},
             {
@@ -19,7 +20,8 @@ $(document).ready(function() {
 
     $('#more').on('click',function(){
         let html="";
-        html='<tr class="materiales_tr"><td><input type="text" class="form-control partida"></td>'+
+        contador = contador+1;
+        html='<tr class="materiales_tr"><td><input type="text" class="form-control partida" value="'+contador+'" disabled></td>'+
             '<td><input type="text" class="form-control marca"></td>'+
             '<td><input type="text" class="form-control modelo"></td>'+
             '<td><textarea class="form-control descripcion" rows="5" ></textarea></td>'+
@@ -39,7 +41,6 @@ $(document).ready(function() {
             var mat = [];
             mat.push($(this).find('.partida').val(),$(this).find('.marca').val(),$(this).find('.modelo').val(),$(this).find('.descripcion').val(),$(this).find('.cantidad').val(),$(this).find('.unidad').val(),$(this).find('.area').val())
             materiales.push(mat);
-            console.log(materiales);
         })
         $.ajax({
             method:"POST",
@@ -50,25 +51,52 @@ $(document).ready(function() {
                 "equipo":$('#equipo').val(),
                 "economico":$('#economico').val(),
                 "folio":$('#folio').val(),
-                "fecha_emision":$('#fecha_emision').val(),
-                "fecha_requerida":$('#fecha_requerida').val(),
                 "depto":$('#depto').val(),
                 "materiales":materiales,
                 "justificacion":$('#justificacion').val(),
-                "observaciones":$('#observaciones').val(),
-                "solicitante":$('#solicitante').val()
+                "observaciones":$('#observaciones').val()
             },
             success:function(response){
-                console.log(response);
-            }
+                console.log("hola mundo");
+                if(response.status == 200){
+                    $('#successModal').modal('show');
+                }
+            },
+            error: function(err) {
+                console.log(err);
+            } 
         })
-    })
-       
+    })   
+    randomly();
 })
-
 
 function detail(id){
     window.open('services/documents/requisicionpdf?id='+id, '_blank');
 }
 
+function redirect(){
+    location.href='mis_requisiciones';
+}
 
+function remove(id){
+    $.ajax({
+        method:"POST",
+        url:"services/removeRequisition",
+        dataType:"json",
+        data:{id:id},
+        success:function(response){
+            if(response.status == 200){
+                $("#dataTable").DataTable().ajax.reload(null, false);
+            }else{
+                $('#errorModal').modal('show');
+            }
+        }
+    })
+}
+
+function randomly(){
+    let string = "";
+    string = Math.random().toString(36).slice(2)
+    $('#folio').val(string);
+   // return string;
+}

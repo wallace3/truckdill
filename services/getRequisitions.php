@@ -74,6 +74,7 @@
         SELECT * 
         FROM requisitions
         WHERE ID_Resident =  $idResident
+        AND Status = 1
     ) x";
     $extraWhere = "";
     $groupBy = "";

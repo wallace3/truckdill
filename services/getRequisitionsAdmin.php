@@ -77,6 +77,7 @@
         FROM requisitions req
         JOIN residents res ON res.ID_Resident = req.ID_Resident
         JOIN drills drill ON drill.ID_Drill = req.ID_Drill
+        WHERE req.Status = 1
     ) x";
     $extraWhere = "";
     $groupBy = "";

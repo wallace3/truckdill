@@ -17,7 +17,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <link href="template/img/icon.png" rel="icon" />
-        <title>TruckDill </title>
+        <title>TDM GROUP</title>
         <link
             href="template/vendor/fontawesome-free/css/all.min.css"
             rel="stylesheet"
@@ -30,15 +30,7 @@
         />
         <link href="template/css/ruang-admin.min.css" rel="stylesheet" />
         <link href="template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-        <style>
-        
-            .select2 select2-container select2-container--default select2-container--focus{
-                width:100%!important;
-            }
 
-        
-        </style>
     </head>
 
     <body id="page-top">
@@ -54,35 +46,35 @@
                             <div class="col-lg-12">
                                 <div class="card mb-4">
                                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">Requisiciones</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Ordenes de Compra</h6>
                                     </div>
                                     <div class="table-responsive p-3">
                                         <table class="table align-items-center table-flush" id="dataTable">
-                                            <thead class="thead-light">
+                                            <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Proveedor</th>
                                                     <th>Proyecto</th>
-                                                    <th>Residente</th>
-                                                    <th>U. Minera</th>
-                                                    <th>Fecha de Emisión</th>
-                                                    <th>Fecha Requerida</th>
-                                                    <th>Solicitante</th>
-                                                    <th>Estatus</th>
+                                                    <th>Equipo</th>
+                                                    <th>Folio</th>
+                                                    <th>Depto</th>
+                                                    <th>Total</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+
                                             </tbody>
+                                            
                                             <tfoot>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>Proveedor</th>
                                                     <th>Proyecto</th>
-                                                    <th>Residente</th>
-                                                    <th>U. Minera</th>
-                                                    <th>Fecha de Emisión</th>
-                                                    <th>Fecha Requerida</th>
-                                                    <th>Solicitante</th>
-                                                    <th>Estatus</th>
+                                                    <th>Equipo</th>
+                                                    <th>Folio</th>
+                                                    <th>Depto</th>
+                                                    <th>Total</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                             </tfoot>
@@ -98,32 +90,51 @@
             </div>
         </div>
 
-        <div class="modal" id="suppliersModal" tabindex="-1" role="dialog">
+        <div class="modal" id="newModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Asignación de Requisición</h5>
+                        <h5 class="modal-title">Nueva Residente</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class = "form-group row">
-                            <label>Proveedores</label>
-                            <select class="js-example-basic-multiple form-control suppliers" id="supplierEmail" name = "supplier" multiple="multiple">
+                        <div class="form-group">
+                            <label>Usuario para Inicio de Sesión:</label>
+                            <input type="text" class="form-control" id="user">
+                        </div>
+                        <div class="form-group">
+                            <label>Contraseña:</label>
+                            <input type="password" class="form-control" id="pass">
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electrónico:</label>
+                            <input type="text" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <input type="text" class="form-control" id="tel">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de Residente:</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Unidad Minera:</label>
+                            <select class="form-control ums" id="um">
                             </select>
-                            <input type="hidden" id="idRequisicion">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="sendEmail()">Enviar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" onclick="create()">Crear</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="exitoModal" tabindex="-1" role="dialog">
+        <div class="modal" id="blockModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -133,76 +144,91 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Se envio requisicion correctamente.</p>
+                        <p>Se ha bloqueado a residente exitosamente</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="noData" tabindex="-1" role="dialog">
+        <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Sin Info</h5>
+                        <h5 class="modal-title">Éxito</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>No se han adjuntado cotizaciones para esa requisición</p>
+                        <p>Se ha eliminado a proveedor exitosamente</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="modal" id="qModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content ">
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Cotizaciones</h5>
+                        <h5 class="modal-title">Error</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <table id="qTable" class="table" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Cotización</th>
-                                        <th>Proveedor</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataQ">
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Cotización</th>
-                                        <th>Proveedor</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                        <p>Ha ocurrido un error en la operación</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="modal" id="exitoModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Exito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se ha actualizo información con éxito</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        
+        <div class="modal" id="successModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Éxito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se ha activado residente exitosamente</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Scroll to top -->
         <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -214,9 +240,8 @@
         <script src="template/js/ruang-admin.min.js"></script>
         <script src="template/vendor/datatables/jquery.dataTables.min.js"></script>
         <script src="template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <script src="js/datatable.js"></script>
-        <script src="js/requisicionesAdmin.js"></script>
+        <script src="js/ordenes.js"></script>
         
 
     </body>

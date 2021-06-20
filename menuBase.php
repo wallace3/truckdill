@@ -112,9 +112,16 @@
           </a>
           <div id = "requisicionesTab" class = "collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
             <div class = "bg-white py-2 collapse-inner rounded">
+              <a class = "collapse-item" href="residentes">Lista Residentes</a>
               <a class = "collapse-item" href="requisiciones">Requisiciones</a>
             </div>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ordenes">
+            <i class="fas fa-file-csv"></i>
+            <span>Ordenes de Compra</span>
+          </a>
         </li>
         ';
 
@@ -146,7 +153,19 @@
             <i class="fas fa-money-check"></i>
             <span>Complemento de Pago</span>
           </a>
-        </li>'
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="requisicion">
+          <i class="far fa-file-word"></i>
+          <span>Requisiciones</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mis_oc">
+          <i class="fas fa-file-csv"></i>
+          <span>Mis Ordenes de Compra</span>
+        </a>
+      </li>'
           ;
         }
       ?>

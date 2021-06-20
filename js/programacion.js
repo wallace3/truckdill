@@ -12,7 +12,7 @@ $(document).ready(function(){
                 columns: [5],
                 render: function(data, type, row){
                     if(row[5]==0){
-                        return "<span onclick='updateModal(&quot;"+row[0]+"&quot;,&quot;"+row[3]+"&quot;,&quot;"+row[4]+"&quot;);'><i class='far fa-edit' style='color:#6777EF'></i></span><span onclick='complete("+row[0]+");'><i class='fa fa-check' style='color:#66bb6a'></i></span>";
+                        return "<span onclick='updateModal(&quot;"+row[0]+"&quot;,&quot;"+row[3]+"&quot;,&quot;"+row[4]+"&quot;);'><i class='far fa-edit' style='color:#6777EF'></i></span><span onclick='complete(&quot;"+row[0]+"&quot;,&quot;"+row[2]+"&quot;);'><i class='fa fa-check' style='color:#66bb6a'></i></span>";
                     }else{
                         return "<b>PAGADO</b>";
                     }
@@ -131,14 +131,15 @@ function createPayment()
     })
 }
 
-function complete(id)
+function complete(id,invoice)
 {
     $.ajax({
         method:"POST",
         url:"services/completePayment",
         dataType:"json",
         data:{
-            "ID_Invoice":id
+            "ID_Invoice":id,
+            "invoice":invoice
         },
         success:function(response){
             if(response.status == 200){

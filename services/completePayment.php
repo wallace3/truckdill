@@ -9,7 +9,8 @@
 	$actual_link = 'http://'.$_SERVER['HTTP_HOST'];
 
 	$json = [
-        "ID_Invoice"=>$_POST['ID_Invoice']
+        "ID_Invoice"=>$_POST['ID_Invoice'],
+		"invoice"=>$_POST['invoice']
 	];
 
 	$curl = curl_init();
@@ -32,6 +33,7 @@
 	$response_user = curl_exec($curl);
     $err = curl_error($curl);
 	$responseJsonUser = json_decode($response_user);
+	print_r($response_user);die;
 	
     if($err){
         die(json_encode([

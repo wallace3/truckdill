@@ -123,6 +123,12 @@
             <span>Ordenes de Compra</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://checklist.truckdm.com.mx/login.php" target="_BLANK">
+            <i class="fas fa-pencil-alt"></i>
+            <span>Checklist</span>
+          </a>
+        </li>
         ';
 
         }

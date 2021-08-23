@@ -33,9 +33,9 @@ $(document).ready(function() {
                         data: 4,
                         render: function(data, type, row){
                             if(row[3]==1){
-                                return '<span onclick="blockUser('+data+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span>';
+                                return '<span style="margin-right:5px;" onclick="blockUser('+data+');"><i class="fas fa-ban" style="color:#fc544b;"></i></span><span onclick="deleteUser('+data+');"><i class="fas fa-trash" style="color:#fc544b;"></i></span>';
                             }else{
-                                return '<span onclick="activeUser('+data+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span>';
+                                return '<span style="margin-right:5px; onclick="activeUser('+data+');"><i class="fas fa-check" style="color:#66bb6a;"></i></span><span onclick="deleteUser('+data+');"><i class="fas fa-trash" style="color:#fc544b;"></i></span>';
                             }
                         } 
                     } 
@@ -175,6 +175,26 @@ function blockUser(id){
         }
     })
 }
+
+function deleteUser(id){
+    $.ajax({
+        method:"POST",
+        url:"services/deleteUser",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#deleteModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+            $("#dataTable").DataTable().ajax.reload(null, false);
+        }
+    })
+}
+
 
 function activeUser(id)
 {

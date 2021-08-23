@@ -54,7 +54,7 @@ $sql_details = array(
 require('ssp.customized.class.php' );
 
 $joinQuery = "FROM `users` AS `u` JOIN `user_types` AS `ud` ON (`ud`.`ID_Type` = `u`.`ID_Type`)";
-$extraWhere = "";
+$extraWhere = "`u`.`Status` != 3";
 $groupBy = "`u`.`Username`";
 $having = "";
 

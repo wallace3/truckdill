@@ -9,7 +9,7 @@
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => $actual_link."/truckdmback/Quotation/getQuotations",  
+        CURLOPT_URL => $actual_link."/truckdmback/Quotation/getQuotationsNew",  
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -27,6 +27,50 @@
     $err = curl_error($curl);
     $responseJson	= json_decode($response);
     curl_close($curl);
+    $arr = array();
+
+    $new = [];
+    $none = [];
+
+    foreach ($responseJson->data as $key => $item) {
+       $arr[$item->Supplier][] = $item;
+    }
+
+foreach ($arr as $key => $value) {
+    $none[] = $value;
+}
+
+
+
+    /*$new_array = array();
+$exists_array    = array();
+foreach( $responseJson->data as $element ) {
+    if( !in_array( $element->Supplier, $exists_array )) {
+        $exists_array[] = $element->Supplier;
+    }
+}
+
+    $array_data = array();
+    $object = new stdClass();
+    foreach($exists_array as $elemento){
+        foreach($responseJson->data as $value){
+            $object->materials = $value;
+            $array_data[] = $object;
+        }
+    }
+
+
+
+    print_r($array_data);die;
+
+    $new_array[] = $element;
+    print_r($new_array);die;
+    //print_r($response->data)d;die;
+    $entrada = array($response['data']);
+    $resultado = array_unique($entrada);
+    var_dump($resultado);*/
+
+
 
     if($err){
 		die(json_encode([
@@ -37,7 +81,7 @@
         die(json_encode([
             "status" => 200,
             "message" => "Exito",
-            "data" => $responseJson
+            "data" => $none
         ]));
     }
 

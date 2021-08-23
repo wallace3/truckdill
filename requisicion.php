@@ -65,7 +65,6 @@
                                                     <th>Fecha de Requisición</th>
                                                     <th>Url</th>
                                                     <th>Estatus</th>
-                                                    <th>Archivo de Cotización</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -78,7 +77,6 @@
                                                     <th>Fecha de Requisición</th>
                                                     <th>Url</th>
                                                     <th>Estatus</th>
-                                                    <th>Archivo de Cotización</th>
                                                     <th></th>
                                                 </tr>
                                             </tfoot>
@@ -137,6 +135,70 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="errorModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ha Ocurrido un Error</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="material" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Material a Cotizar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive p-3">
+                            <table class="table align-items-center table-flush" id="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>Unidad</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="materialToAdd">
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>Unidad</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <p>* COLOCAR PRECIO UNITARIO DEL MATERIAL A REQUERIR</p>
+                    <p>* COLOCAR PRECIO DESPUES DE IVA</p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="savePrices();">Agregar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>

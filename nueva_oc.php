@@ -1,7 +1,7 @@
 <?php 
     session_name('TRUCK');
     session_start();
-    require_once('services/db.php');
+    require_once('services/bd.php');
     if(!isset($_SESSION['idUsuario']) || empty($_SESSION)){
         header("Location: login.php");
     }
@@ -10,10 +10,11 @@
     $req->execute();
     $requisition = $req->fetchAll();
 
-    $sql2 = "SELECT * FROM requisition_material WHERE ID_Requisition = '".$_GET['id']."'";
+    $sql2 = "SELECT req_mat.*, pdf.Price_U, pdf.Price FROM requisition_material req_mat JOIN requisitions_pdf pdf ON req_mat.ID_Material = pdf.ID_Material WHERE req_mat.ID_Requisition = '".$_GET['id']."' AND req_mat.ID_Requisition = pdf.ID_Requisition";
     $req2 = $bdd->prepare($sql2);
     $req2->execute();
     $reqm = $req2->fetchAll();
+
 
 ?>
 <!DOCTYPE html>
@@ -126,13 +127,12 @@
                                         <label>Enviar Factura Original y Remisión Firmada de Entrega A :</label>
                                         <span>paulina.hernandez@lopezrdzcia.com</span>
                                         <span>C.C: gerardo.lopez@lopezrdzcia.com</span>
-                                        <span>C.C: mdiaz@truckdm.com</span>
                                         
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="table-responsive p-3">
-                                        <table class="table align-items-center table-flush" id="tableMaterials">
+                                        <table class="table" id="tableMaterials">
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>Partida</th>
@@ -150,8 +150,8 @@
                                                 <td><input type="text" class="form-control cantidad" value="<?php echo $val[5];?>" disabled></td>
                                                 <td><input type="text" class="form-control unidad" value="<?php echo $val[6];?>" disabled></td>
                                                 <td><textarea class="form-control descripcion" rows="5"  disabled><?php echo $val[4];?></textarea></td>
-                                                <td><input type="text" class="form-control preciou"></td>
-                                                <td><input type="text" class="form-control total_u"></td>
+                                                <td><input type="text" class="form-control preciou" value="<?php echo $val[9];?>"></td>
+                                                <td><input type="text" class="form-control total_u" value="<?php echo $val[10];?>"></td>
                                             </tr>
                                             <?php }?>
                                             </tbody>

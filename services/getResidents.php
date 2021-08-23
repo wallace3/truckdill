@@ -76,6 +76,7 @@ $joinQuery = "FROM (
                 FROM residents re 
                 JOIN users us ON us.ID_User = re.ID_User 
                 JOIN drills ON drills.ID_Drill = re.ID_Drill
+                WHERE us.Status != 3
                 ) x";
 $extraWhere = "";
 $groupBy = "";

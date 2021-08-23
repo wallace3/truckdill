@@ -171,27 +171,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <table id="qTable" class="table" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Cotización</th>
-                                        <th>Proveedor</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="dataQ">
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Cotización</th>
-                                        <th>Proveedor</th>
-                                        <th>Estatus</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                        <div class="row" id="dataQ">
+                           
                         </div>
                     </div>
                     <div class="modal-footer">

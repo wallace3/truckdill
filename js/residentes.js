@@ -19,9 +19,9 @@ $(document).ready(function(){
                 data:6,
                 render: function(data,type,row){
                     if(data == 1){
-                      return "<span onclick='blockUser("+row[7]+");'><i class='fas fa-trash' style='color:#fc544b;'></i></span>";
+                      return "<span style='margin-right:5px;' onclick='blockUser("+row[7]+");'><i class='fas fa-ban' style='color:#fc544b;'></i></span><span onclick='deleteUser("+row[7]+");'><i class='fas fa-trash' style='color:#fc544b;'></i></span>";
                     }else{
-                        return "<span onclick='activeUser("+row[7]+");'><i class='fas fa-check' style='color:#66bb6a;'></i></span>";
+                        return "<span tyle='margin-right:5px;' onclick='activeUser("+row[7]+");'><i class='fas fa-check' style='color:#66bb6a;'></i></span><span onclick='deleteUser("+row[7]+");'><i class='fas fa-trash' style='color:#fc544b;'></i></span>";
                     }
                 }
             },
@@ -82,6 +82,25 @@ function blockUser(id){
     $.ajax({
         method:"POST",
         url:"services/blockUser",
+        dataType:"json",
+        data:{
+            "id":id
+        },
+        success:function(response){
+            if(response.status == 200){
+                $('#blockModal').modal('show');
+            }else{
+                $('#errorModal').modal('show');
+            }
+            $("#residents").DataTable().ajax.reload(null, false);
+        }
+    })
+}
+
+function deleteUser(id){
+    $.ajax({
+        method:"POST",
+        url:"services/deleteUser",
         dataType:"json",
         data:{
             "id":id

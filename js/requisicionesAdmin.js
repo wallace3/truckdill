@@ -84,12 +84,36 @@ function quotationModal(id){
         dataType:"json",
         data:{
             id:id
-        },success:function(response){
-            console.log(typeof(response.data.data));
-            
-var table = "";
-console.log(table);
-            if(typeof(response.data.data) != "undefined"){
+        },success:function(response){         
+            var table = "";
+            console.log(response.data[0].length)
+
+            response.data.forEach(element => {
+                console.log(element[0].Supplier);
+                table+="<div class='col-md-6'><p><b>Proveedor:</b> "+element[0].Supplier+"</p>";
+                         
+                element.forEach(value => {
+                    table+="<p><b>Descripción: </b>"+value.Descripcion+"</p>"+
+                            "<p>Cantidad: "+value.Cantidad+"</p>"+
+                            "<p>Precio U. : "+value.Price_U+"</p>"+
+                            "<p>Total: " +value.Price +"</p>";
+                });
+
+                if(element[0].statusq == 1){
+                    table+="<button class='btn btn-primary generarO' onclick='aceptar(&quot;"+element[0].ID_Requisition+"&quot;,&quot;"+element[0].ID_Supplier+"&quot;,&quot;"+element[0].ID_Cotizacion+"&quot;)'>Generar Orden</button><br>";
+                    table+="<button class='btn btn-danger rechazarO' onclick='rechazar("+element[0].ID_Cotizacion+")'>Rechazar Cotizacion</button><br>";
+                }else if(element[0].statusq == 2){
+                    table+='<span class="badge badge-success">Aceptada</span>';
+                }else{
+                    table+='<span class="badge badge-danger">Rechazada</span>';
+                }
+                table+="</div>";
+            });
+
+            $('#dataQ').html(table);
+            $('#qModal').modal('show');
+
+            /*if(typeof(response.data.data) != "undefined"){
                 
                 response.data.data.forEach(element => {
                     
@@ -122,7 +146,7 @@ console.log(table);
                 $('#qModal').modal('show');
             }else{
                 $('#noData').modal('show');
-            }
+            }*/
         }
     })
 }

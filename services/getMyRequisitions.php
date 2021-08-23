@@ -40,7 +40,7 @@
         array( 'db' => '`x`.`Date`',   'dt' => 2, 'field' => 'Date' ),
         array( 'db' => '`x`.`Url`',   'dt' => 3, 'field' => 'Url' ),
         array( 'db' => '`x`.`Status`',   'dt' => 4, 'field' => 'Status' ),
-        array( 'db' => '`x`.`File`',  'dt' => 5, 'field' => 'File' )
+        array( 'db' => '`x`.`pdf_stat`',   'dt' => 5, 'field' => 'pdf_stat' ),
     );
     
     // SQL server connection information
@@ -72,9 +72,11 @@
     //SELECT *, GROUP_CONCAT(serv.Service) servs
     
     $joinQuery = "FROM(
-        SELECT *
-        FROM quotation
-        WHERE ID_Supplier = '$idsup'
+        SELECT q.*, pdf.`Status` as pdf_stat 
+        FROM quotation q
+				LEFT JOIN requisitions_pdf pdf ON pdf.ID_Requisition = q.ID_Requisition
+        WHERE q.ID_Supplier = '$idsup'
+				GROUP BY ID_Cotizacion
     ) x";
     $extraWhere = "";
     $groupBy = "";

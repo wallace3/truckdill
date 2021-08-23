@@ -17,7 +17,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <link href="template/img/logo/logo.png" rel="icon" />
-        <title>TruckDill </title>
+        <title>TDM GROUP</title>
         <link
             href="template/vendor/fontawesome-free/css/all.min.css"
             rel="stylesheet"
@@ -104,7 +104,26 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Se ha bloqueado a proveedor exitosamente</p>
+                        <p>Se ha bloqueado a usuario exitosamente</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Éxito</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Se ha eliminado usuario correctamente</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
@@ -143,7 +162,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Se ha activado proveedor exitosamente</p>
+                        <p>Se ha activado usuario exitosamente</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>

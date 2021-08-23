@@ -1,4 +1,14 @@
 $(document).ready(function() {
+
+    
+    $('.total_u').each(function(){
+        var sum = 0;
+        $('.total_u').each(function() {
+            sum += Number($(this).val());
+        });
+        $('#subtotal').val(sum);
+    })
+    
     $('.materiales_tr .preciou').keyup(function(){
         let number;
         number = $(this).parent().parent().find('.cantidad').val() * $(this).parent().parent().find('.preciou').val();
@@ -6,13 +16,6 @@ $(document).ready(function() {
         console.log($(this).parent().parent().find('.cantidad').val()); 
         $(this).parent().parent().find('.total_u').val(number);
 
-        $('.total_u').each(function(){
-            var sum = 0;
-            $('.total_u').each(function() {
-                sum += Number($(this).val());
-            });
-            $('#subtotal').val(sum);
-        })
     })
 
     $('#iva').keyup(function(){
